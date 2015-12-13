@@ -156,18 +156,22 @@ public class MainActivity extends Activity
                 break;
 
             case 6:
-                fragment = new SoundTabHostFragment();
+                fragment = new PieTabHostFragment();
                 break;
 
             case 7:
-                fragment = new UITabHostFragment();
+                fragment = new SoundTabHostFragment();
                 break;
 
             case 8:
-                fragment = new AppLauncherTabHostFragment();
+                fragment = new UITabHostFragment();
                 break;
 
             case 9:
+                fragment = new AppLauncherTabHostFragment();
+                break;
+
+            case 10:
                 fragment = new DisplayFragment();
                 break;
         }
