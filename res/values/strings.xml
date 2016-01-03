@@ -801,7 +801,7 @@
     <string name="weather_show_location_title">Show location</string>
     <string name="weather_show_location_summary">Enable to show the location</string>
     <string name="weather_condition_icon_title">Condition icon</string>
-    <string name="weather_condition_icon_dlg_title">Coose an icon for displaying the weather condition</string>
+    <string name="weather_condition_icon_dlg_title">Choose an icon for displaying the weather condition</string>
     <string name="weather_condition_icon_monochrome_title">Monochrome</string>
     <string name="weather_condition_icon_colored_title">Colored</string>
     <string name="weather_condition_icon_vclouds_title">VClouds</string>
@@ -1039,4 +1039,10 @@
     <string name="carrier_label_hide_label_title">Hide on notifications</string>
     <string name="carrier_label_number_of_notification_icons_title">Max Number of icons before hiding</string>
       
+    <!-- Max Lockscreen Notification count -->
+    <string name="weather_cat_notifications_title">Notifications</string>
+    <string name="lockscreen_maxnotif_title">Lockscreen notification count</string>
+    <string name="lockscreen_maxnotif_sumary">Enable adjustment of max lockscreen notifications</string>
+    <string name="lockscreen_maxnotif_config">Max lockscreen notifications</string>
+
 </resources>
