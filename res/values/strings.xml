@@ -447,25 +447,6 @@
     <string name="listview_anticipate_overshoot_interpolator">Anticipate and overshoot</string>
     <string name="listview_bounce_interpolator">Bounce</string>
 
-    <!-- AOKP custom system animations -->
-    <string name="aokp_animation_title">System animations</string>
-    <string name="aokp_animation_summary">AOKP custom animation</string>
-    <string name="activity_open_title">Activity open animation</string>
-    <string name="activity_close_title">Activity close animation</string>
-    <string name="task_open_title">Task open animation</string>
-    <string name="task_open_behind_title">Task open behind animation</string>
-    <string name="task_close_title">Task close animation</string>
-    <string name="task_move_to_front_title">Move to front animation</string>
-    <string name="task_move_to_back_title">Move to back animation</string>
-    <string name="wallpaper_open_title">Wallpaper open animation</string>
-    <string name="wallpaper_close_title">Wallpaper close animation</string>
-    <string name="wallpaper_intra_open_title">Wallpaper intra open animation</string>
-    <string name="wallpaper_intra_close_title">Wallpaper intra close animation</string>
-    <string name="animation_duration_title">Animation duration</string>
-    <string name="title_animation_no_override">Prevent app overrides</string>
-    <string name="summary_animation_no_override">Prevent apps from overriding transitions</string>
-    <string name="animation_duration_default">Default</string>
-
     <!-- Scrolling Cache -->
     <string name="pref_scrollingcache_title">Scrolling cache</string>
     <string name="pref_scrollingcache_summary">Scrolling cache may improve scrolling performance at the cost of memory</string>
@@ -473,6 +454,81 @@
     <string name="pref_scrollingcache_default_enable">Default enable</string>
     <string name="pref_scrollingcache_default_disable">Default disable</string>
     <string name="pref_scrollingcache_force_disable">Force disable</string>
+
+    <!-- Toast Animation -->
+    <string name="toast_animation_title">Toast animation</string>
+    <string name="toast_none_animation">None</string>
+    <string name="toast_default_animation">Default</string>
+    <string name="toast_fade_animation">Fade</string>
+    <string name="toast_SlideRight_animation">Slide right</string>
+    <string name="toast_SlideLeft_animation">Slide left</string>
+    <string name="toast_Xylon_animation">Xylon</string>
+    <string name="toast_Toko_animation">Toko</string>
+    <string name="toast_Tn_animation">Tn</string>
+    <string name="toast_Honami_animation">Honami</string>
+    <string name="toast_FastFade_animation">Fast fade</string>
+    <string name="toast_GrowFade_animation">Grow fade</string>
+    <string name="toast_GrowFadeCenter_animation">Grow fade center</string>
+    <string name="toast_GrowFadeBottom_animation">Grow fade bottom</string>
+    <string name="toast_Translucent_animation">Translucent</string>
+    <string name="toast_SlideLeftRight_animation">Slide left to right</string>
+    <string name="toast_SlideRightLeft_animation">Slide right to left</string>
+
+    <!-- CRT animation -->
+    <string name="crt_title">CRT</string>
+    <string name="system_power_crt_mode_title">CRT animation</string>
+    <string name="system_power_crt_mode_dialog_title">CRT animation</string>
+    <string name="system_power_crt_mode_off">Don\'t show</string>
+    <string name="system_power_crt_mode_horizontal">Collapse horizontal</string>
+    <string name="system_power_crt_mode_vertical">Collapse vertical</string>
+    <string name="system_power_crt_mode_both">Collapse orientation dependent</string>
+    <string name="system_power_crt_mode_scale">Scale down</string>
+
+    <!-- Smooth ProgressBar -->
+    <string name="progressbar_title">ProgressBar</string>
+    <string name="progressbar_mirror_title">Mirror Mode</string>
+    <string name="progressbar_reverse_title">Reversed</string>
+    <string name="progressbar_speed_title">Speed</string>
+    <string name="progressbar_width_title">Section Width</string>
+    <string name="progressbar_length_title">Separator Length</string>
+    <string name="progressbar_count_title">Section Count</string>
+    <string name="progressbar_color_1_title">Color 1</string>
+    <string name="progressbar_color_2_title">Color 2</string>
+    <string name="progressbar_color_3_title">Color 3</string>
+    <string name="progressbar_color_4_title">Color 4</string>
+    <string name="sample_progressbar_text">Preview</string>
+
+    <!-- Lockscreen -->
+    <string name="volume_wake_screen">Volume rocker wake</string>
+    <string name="volume_wake_screen_summary">Use the volume keys to wake the screen</string>
+    <string name="volume_music_controls">Volume music controls</string>
+    <string name="volume_music_controls_summary">Whether volume up/down can be long pressed to skip track</string>
+    <string name="lockscreen_minimize_challenge_title">Minimize lockscreen challenge</string>
+    <string name="lockscreen_minimize_challenge_summary">Set wether the lockscreen challenge (circle, pattern, pin) is minimized when the screen is turned on.</string>
+
+    <string name="add_button">Add button</string>
+    <string name="navbar_tab_arrange">Rearrange</string>
+    <string name="navring_tab_settings">Navring</string>
+    <string name="navbar_tab_settings">Settings</string>
+
+    <string name="navigation_bar_height_title">Navigation Bar height</string>
+    <string name="navigation_bar_height_summary">Navigation Bar height while in portrait</string>
+    <string name="navigation_bar_height_landscape_title">Navigation Bar height landscape</string>
+    <string name="navigation_bar_height_landscape_summary">Navigation Bar height while in landscape</string>
+    <string name="navigation_bar_width_title">Navigation Bar width</string>
+    <string name="navigation_bar_width_summary">Navigation Bar height if the bar is along a side</string>
+
+    <string name="lockscreen_see_through">Transparent lockscreen</string>
+    <string name="lockscreen_see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
+    <string name="lockscreen_blur_radius">Blur radius</string>
+
+    <string name="battery_arc_lockscreen_handle">Battery arc handle</string>
+    <string name="battery_arc_lockscreen_handle_summary">An arc around the lockscreen handle representing battery level</string>
+
+    <string name="lockscreen_menu_unlock_title">Menu unlock</string>
+    <string name="lockscreen_menu_unlock_summary">Use the menu key to unlock the screen</string>
+
+    <string name="display_lockscreen_rotation_title">Rotate lockscreen</string>
 
     <!-- Sound -->
     <string name="safe_headset_volume_title">Safe headset volume</string>

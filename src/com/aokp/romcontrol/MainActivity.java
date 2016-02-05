@@ -57,8 +57,6 @@ import com.aokp.romcontrol.fragments.statusbar.ClockSettingsFragment;
 import com.aokp.romcontrol.fragments.statusbar.BatterySettingsFragment;
 import com.aokp.romcontrol.fragments.statusbar.TrafficSettingsFragment;
 
-import com.aokp.romcontrol.fragments.ui.AnimationControls;
-import com.aokp.romcontrol.fragments.ui.AnimBarPreference;
 import com.aokp.romcontrol.fragments.ui.DisplayAnimationsSettings;
 import com.aokp.romcontrol.fragments.ui.GestureAnywhereBuilderActivity;
 import com.aokp.romcontrol.fragments.ui.GestureAnywhereCreateGestureActivity;
