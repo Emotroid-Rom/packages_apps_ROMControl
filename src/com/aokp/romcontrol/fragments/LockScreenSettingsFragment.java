@@ -31,6 +31,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -84,6 +85,7 @@ public class LockScreenSettingsFragment extends Fragment {
         private static final String KEY_WALLPAPER_SET = "lockscreen_wallpaper_set";
         private static final String KEY_WALLPAPER_CLEAR = "lockscreen_wallpaper_clear";
         private static final String KEY_LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
+        private static final String KEYGUARD_TOGGLE_TORCH = "keyguard_toggle_torch";
 
         private static final String PREF_CAT_COLORS =
                 "weather_cat_colors";
@@ -105,6 +107,7 @@ public class LockScreenSettingsFragment extends Fragment {
         private Preference mSetWallpaper;
         private Preference mClearWallpaper;
         private SeekBarPreferenceCham mBlurRadius;
+        private SwitchPreference mKeyguardTorch;
 
         private static final int MONOCHROME_ICON = 0;
         private static final int DEFAULT_COLOR = 0xffffffff;

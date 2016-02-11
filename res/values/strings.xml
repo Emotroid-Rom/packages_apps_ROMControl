@@ -973,4 +973,8 @@
     <string name="status_bar_custom_header_default_title">Use Poly HD images</string>
     <string name="status_bar_custom_header_default_summary">Enable for Polygraphic HD images. Disable for original images.</string>
 
+    <!-- Lockscreen Torch -->
+    <string name="keyguard_torch_title">Lockscreen torch</string>
+    <string name="keyguard_torch_summary">Longpress power button while screen is off to turn on flashlight</string>
+
 </resources>
