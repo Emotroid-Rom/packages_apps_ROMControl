@@ -31,6 +31,12 @@
             android:defaultValue="true" />
 
         <com.aokp.romcontrol.settings.SystemSettingSwitchPreference
+            android:key="systemui_recents_mem_display"
+            android:title="@string/recents_show_membar_title"
+            android:summary="@string/recents_show_membar_summary"
+            android:defaultValue="false" />
+
+        <com.aokp.romcontrol.settings.SystemSettingSwitchPreference
             android:key="recents_full_screen"
             android:title="@string/recents_show_fullscreen"
             android:summaryOn="@string/recents_fullscreen_summary_enabled"
