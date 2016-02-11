@@ -952,6 +952,9 @@
     <string name="keyguard_torch_title">Lockscreen torch</string>
     <string name="keyguard_torch_summary">Longpress power button while screen is off to turn on flashlight</string>
 
+    <!-- Hide Lockscreen alarm -->
+    <string name="hide_lockscreen_alarm_title">Show lockscreen alarm</string>
+
     <!-- Membar recents -->
     <string name="recents_show_membar_title">Memory bar</string>
     <string name="recents_show_membar_summary">Show a bar with the device\'s available memory</string>
