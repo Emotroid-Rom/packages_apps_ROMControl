@@ -108,6 +108,7 @@ public class ButtonSettingsFragment extends Fragment {
         private static final String KEY_VOLUME_MUSIC_CONTROLS = "volbtn_music_controls";
         private static final String KEY_VOLUME_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
         private static final String KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE = "camera_double_tap_power_gesture";
+        private static final String KEYGUARD_TOGGLE_TORCH = "keyguard_toggle_torch";
 
         private static final String CATEGORY_POWER = "power_key";
         private static final String CATEGORY_HOME = "home_key";
@@ -169,6 +170,7 @@ public class ButtonSettingsFragment extends Fragment {
         private SwitchPreference mPowerEndCall;
         private SwitchPreference mHomeAnswerCall;
         private SwitchPreference mCameraDoubleTapPowerGesture;
+        private SwitchPreference mKeyguardTorch;
 
         private SwitchPreference mEnableHwKeys;
 
