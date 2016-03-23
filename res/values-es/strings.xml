@@ -38,7 +38,6 @@
   <string name="default_string">Por defecto</string>
   <string name="choose_app">Elige la aplicación</string>
   <string name="reset_message">¿Restablecer todas las entradas por defecto?</string>
-  <string name="category_about_aokp">Acerca de</string>
   <string name="category_general">General</string>
   <string name="category_lockscreen">Pantalla de bloqueo</string>
   <string name="category_statusbar">Barra de estado</string>
@@ -49,16 +48,6 @@
   <string name="category_sound">Sonido</string>
   <string name="category_ui">Interfaz de usuario</string>
   <string name="category_app_launcher">Lanzador de aplicaciones</string>
-  <string name="devs">El equipo</string>
-  <string name="aokp_website_title">Sitio web AOKP</string>
-  <string name="aokp_website_summary">www.aokp.co - Encuentra los nuevos lanzamientos aquí</string>
-  <string name="aokp_review_title">Revisión del código AOKP - Gerrit</string>
-  <string name="aokp_review_summary">Ver AOKP\'s Gerrit</string>
-  <string name="aokp_irc_title">Únete a nosotros en el IRC</string>
-  <string name="aokp_irc_summary">#teamkang @ irc.freenode.net</string>
-  <string name="about_aokp">Acerca de AOKP</string>
-  <string name="about_aokp_summary">\@null</string>
-  <string name="kanglings">Kanglings</string>
   <string name="general_settings">Configuración general</string>
   <string name="recents_settings">Ajustes recientes</string>
   <string name="lock_clock_title">configuración del reloj</string>

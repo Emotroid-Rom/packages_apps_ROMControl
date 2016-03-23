@@ -30,10 +30,6 @@ import android.view.MenuItem;
 
 import android.view.View;
 
-import com.aokp.romcontrol.fragments.about.AboutCrewFragment;
-import com.aokp.romcontrol.fragments.about.AboutFragment;
-import com.aokp.romcontrol.fragments.about.AboutTabHostFragment;
-
 import com.aokp.romcontrol.fragments.applauncher.AppLauncherTabHostFragment;
 import com.aokp.romcontrol.fragments.applauncher.AppCircleBarSettings;
 
@@ -126,46 +122,42 @@ public class MainActivity extends Activity
 
         switch (position) {
             case 0:
-                fragment = new AboutTabHostFragment();
-                break;
-
-            case 1:
                 fragment = new GeneralTabHostFragment();
                 break;
 
-            case 2:
+            case 1:
                 fragment = new LockScreenSettingsFragment();
                 break;
 
-            case 3:
+            case 2:
                 fragment = new StatusBarTabHostFragment();
                 break;
 
-            case 4:
+            case 3:
                 fragment = new NotificationsDrawerFragment();
                 break;
 
-            case 5:
+            case 4:
                 fragment = new ButtonSettingsFragment();
                 break;
 
-            case 6:
+            case 5:
                 fragment = new PowerMenuSettingsFragment();
                 break;
 
-            case 7:
+            case 6:
                 fragment = new NavbarTabHostFragment();
                 break;
 
-            case 8:
+            case 7:
                 fragment = new SoundTabHostFragment();
                 break;
 
-            case 9:
+            case 8:
                 fragment = new UITabHostFragment();
                 break;
 
-            case 10:
+            case 9:
                 fragment = new AppLauncherTabHostFragment();
                 break;
         }
