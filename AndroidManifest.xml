@@ -88,6 +88,7 @@
         <activity android:name="com.aokp.romcontrol.fragments.ui.DisplayAnimationsSettings" />
         <activity android:name="com.aokp.romcontrol.fragments.ui.GestureAnywhereBuilderActivity" />
         <activity android:name="com.aokp.romcontrol.fragments.ui.GestureAnywhereSettings" />
+        <activity android:name="com.aokp.romcontrol.fragments.ui.GestureAnywhereCreateGestureActivity" />
         <activity android:name="com.aokp.romcontrol.fragments.ui.UITabHostFragment" />
 
         <activity android:name="com.aokp.romcontrol.fragments.ButtonSettingsFragment" />
