@@ -46,7 +46,7 @@
             android:hardwareAccelerated="true" >
         <activity
                 android:name="com.aokp.romcontrol.MainActivity"
-                android:configChanges="orientation|keyboardHidden"
+                android:configChanges="orientation|keyboardHidden|screenSize"
                 android:label="@string/rom_control" />
 
         <activity
