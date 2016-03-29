@@ -765,4 +765,9 @@
   <string name="recents_show_membar_summary">Mostrar una barra con la memoria del dispositivo disponible</string>
   <string name="enable_task_manager_title">Administrador de tareas</string>
   <string name="enable_task_manager_summary">Habilitar/deshabilitar la acción para el botón de administrador de tareas en el área de la barra de estado</string>
+  <string name="hide_lockscreen_alarm_title">Mostrar alarma en la pantalla de bloqueo</string>
+  <string name="qs_num_columns_title">Número de tiles por fila</string>
+  <string name="qs_num_columns_showing">Se muestran %1$s tiles por fila </string>
+  <string name="qs_num_rows_title">Número de filas de tiles </string>
+  <string name="qs_num_rows_showing">Se muestran %1$s filas de tiles</string>
 </resources>
