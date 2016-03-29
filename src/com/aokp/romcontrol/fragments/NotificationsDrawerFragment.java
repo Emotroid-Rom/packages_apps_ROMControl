@@ -92,6 +92,8 @@ public class NotificationsDrawerFragment extends Fragment {
 
         private ListPreference mNumColumns;
 
+        private ListPreference mNumRows;
+
         private ListPreference mQuickPulldown;
 
         private ColorPickerPreference mClearAllIconColor;
@@ -113,11 +115,20 @@ public class NotificationsDrawerFragment extends Fragment {
             // Number of QS Columns 3,4,5
             mNumColumns = (ListPreference) findPreference("sysui_qs_num_columns");
             int numColumns = Settings.System.getIntForUser(resolver,
-                    Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColums(),
+                    Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColumns(),
                     UserHandle.USER_CURRENT);
             mNumColumns.setValue(String.valueOf(numColumns));
             updateNumColumnsSummary(numColumns);
             mNumColumns.setOnPreferenceChangeListener(this);
+
+            // Number of QS Rows 3,4
+            mNumRows = (ListPreference) findPreference("sysui_qs_num_rows");
+            int numRows = Settings.System.getIntForUser(resolver,
+                    Settings.System.QS_NUM_TILE_ROWS, getDefaultNumRows(),
+                    UserHandle.USER_CURRENT);
+            mNumRows.setValue(String.valueOf(numRows));
+            updateNumRowsSummary(numRows);
+            mNumRows.setOnPreferenceChangeListener(this);
 
             mQuickPulldown = (ListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
 
@@ -186,7 +197,13 @@ public class NotificationsDrawerFragment extends Fragment {
                 Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_COLUMNS,
                         numColumns, UserHandle.USER_CURRENT);
                 updateNumColumnsSummary(numColumns);
-                return true;                
+                return true;
+            } else if (preference == mNumRows) {
+                int numRows = Integer.valueOf((String) newValue);
+                Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_ROWS,
+                        numRows, UserHandle.USER_CURRENT);
+                updateNumRowsSummary(numRows);
+                return true;               
             }
             return false;
         }
@@ -269,12 +286,31 @@ public class NotificationsDrawerFragment extends Fragment {
             mNumColumns.setSummary(getResources().getString(R.string.qs_num_columns_showing, prefix));
         }
 
+        private void updateNumRowsSummary(int numRows) {
+            String prefix = (String) mNumRows.getEntries()[mNumRows.findIndexOfValue(String
+                    .valueOf(numRows))];
+            mNumRows.setSummary(getResources().getString(R.string.qs_num_rows_showing, prefix));
+        }
+
         private int getDefaultNumColums() {
             try {
                 Resources res = getActivity().getPackageManager()
                         .getResourcesForApplication("com.android.systemui");
                 int val = res.getInteger(res.getIdentifier("quick_settings_num_columns", "integer",
                         "com.android.systemui")); // better not be larger than 5, that's as high as the
+                                                  // list goes atm
+                return Math.max(1, val);
+            } catch (Exception e) {
+                return 3;
+            }
+        }
+
+        private int getDefaultNumRows() {
+            try {
+                Resources res = getActivity().getPackageManager()
+                        .getResourcesForApplication("com.android.systemui");
+                int val = res.getInteger(res.getIdentifier("quick_settings_num_rows", "integer",
+                        "com.android.systemui")); // better not be larger than 4, that's as high as the
                                                   // list goes atm
                 return Math.max(1, val);
             } catch (Exception e) {
