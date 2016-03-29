@@ -114,7 +114,7 @@ public class NotificationsDrawerFragment extends Fragment {
 
             // Number of QS Columns 3,4,5
             mNumColumns = (ListPreference) findPreference("sysui_qs_num_columns");
-            int numColumns = Settings.System.getIntForUser(resolver,
+            int numColumns = Settings.System.getIntForUser(mResolver,
                     Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColumns(),
                     UserHandle.USER_CURRENT);
             mNumColumns.setValue(String.valueOf(numColumns));
@@ -123,7 +123,7 @@ public class NotificationsDrawerFragment extends Fragment {
 
             // Number of QS Rows 3,4
             mNumRows = (ListPreference) findPreference("sysui_qs_num_rows");
-            int numRows = Settings.System.getIntForUser(resolver,
+            int numRows = Settings.System.getIntForUser(mResolver,
                     Settings.System.QS_NUM_TILE_ROWS, getDefaultNumRows(),
                     UserHandle.USER_CURRENT);
             mNumRows.setValue(String.valueOf(numRows));
@@ -194,13 +194,13 @@ public class NotificationsDrawerFragment extends Fragment {
                 return true;
             } else if (preference == mNumColumns) {
                 int numColumns = Integer.valueOf((String) newValue);
-                Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_COLUMNS,
+                Settings.System.putIntForUser(mResolver, Settings.System.QS_NUM_TILE_COLUMNS,
                         numColumns, UserHandle.USER_CURRENT);
                 updateNumColumnsSummary(numColumns);
                 return true;
             } else if (preference == mNumRows) {
                 int numRows = Integer.valueOf((String) newValue);
-                Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_ROWS,
+                Settings.System.putIntForUser(mResolver, Settings.System.QS_NUM_TILE_ROWS,
                         numRows, UserHandle.USER_CURRENT);
                 updateNumRowsSummary(numRows);
                 return true;               
@@ -292,7 +292,7 @@ public class NotificationsDrawerFragment extends Fragment {
             mNumRows.setSummary(getResources().getString(R.string.qs_num_rows_showing, prefix));
         }
 
-        private int getDefaultNumColums() {
+        private int getDefaultNumColumns() {
             try {
                 Resources res = getActivity().getPackageManager()
                         .getResourcesForApplication("com.android.systemui");
