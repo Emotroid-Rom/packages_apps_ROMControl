@@ -28,7 +28,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -87,6 +90,8 @@ public class NotificationsDrawerFragment extends Fragment {
         private static final int MENU_RESET = Menu.FIRST;
         private static final int DLG_RESET = 0;
 
+        private ListPreference mNumColumns;
+
         private ListPreference mQuickPulldown;
 
         private ColorPickerPreference mClearAllIconColor;
@@ -104,6 +109,15 @@ public class NotificationsDrawerFragment extends Fragment {
             addPreferencesFromResource(R.xml.fragment_notificationsdrawer_settings);
             mResolver = getActivity().getContentResolver();
             PreferenceScreen prefSet = getPreferenceScreen();
+
+            // Number of QS Columns 3,4,5
+            mNumColumns = (ListPreference) findPreference("sysui_qs_num_columns");
+            int numColumns = Settings.System.getIntForUser(resolver,
+                    Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColums(),
+                    UserHandle.USER_CURRENT);
+            mNumColumns.setValue(String.valueOf(numColumns));
+            updateNumColumnsSummary(numColumns);
+            mNumColumns.setOnPreferenceChangeListener(this);
 
             mQuickPulldown = (ListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
 
@@ -167,6 +181,12 @@ public class NotificationsDrawerFragment extends Fragment {
                     Settings.System.NOTIFICATION_DRAWER_CLEAR_ALL_ICON_COLOR, intHex);
                 preference.setSummary(hex);
                 return true;
+            } else if (preference == mNumColumns) {
+                int numColumns = Integer.valueOf((String) newValue);
+                Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_COLUMNS,
+                        numColumns, UserHandle.USER_CURRENT);
+                updateNumColumnsSummary(numColumns);
+                return true;                
             }
             return false;
         }
@@ -240,6 +260,25 @@ public class NotificationsDrawerFragment extends Fragment {
                         ? R.string.status_bar_quick_qs_pulldown_summary_left
                         : R.string.status_bar_quick_qs_pulldown_summary_right);
                 mQuickPulldown.setSummary(res.getString(R.string.status_bar_quick_qs_pulldown_summary, direction));
+            }
+        }
+
+        private void updateNumColumnsSummary(int numColumns) {
+            String prefix = (String) mNumColumns.getEntries()[mNumColumns.findIndexOfValue(String
+                    .valueOf(numColumns))];
+            mNumColumns.setSummary(getResources().getString(R.string.qs_num_columns_showing, prefix));
+        }
+
+        private int getDefaultNumColums() {
+            try {
+                Resources res = getActivity().getPackageManager()
+                        .getResourcesForApplication("com.android.systemui");
+                int val = res.getInteger(res.getIdentifier("quick_settings_num_columns", "integer",
+                        "com.android.systemui")); // better not be larger than 5, that's as high as the
+                                                  // list goes atm
+                return Math.max(1, val);
+            } catch (Exception e) {
+                return 3;
             }
         }
     }
