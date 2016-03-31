@@ -773,4 +773,5 @@
   <string name="block_on_secure_keyguard_title">Deshabilitar los accesos rápidos en la pantalla de bloqueo</string>
   <string name="block_on_secure_keyguard_summary">Aumenta la seguridad de tu bloqueo desactivando este acceso</string>
   <string name="qs_transparent_shade">Transparencia del fondo de QS</string>
+  <string name="qs_transparent_header">Transparencia del encabezado de QS</string>
 </resources>

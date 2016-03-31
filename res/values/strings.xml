@@ -923,5 +923,8 @@
     <string name="block_on_secure_keyguard_summary">Disables quick settings in the keyguard for a secure lock only</string>
 
     <!-- QS shade transparency -->
-    <string name="qs_transparent_shade">QS shade transparency</string>   
+    <string name="qs_transparent_shade">QS shade transparency</string>
+    <!-- QS header transparency -->
+    <string name="qs_transparent_header">QS header transparency</string>
+    
 </resources>

@@ -30,6 +30,15 @@
         AOKP:unitsRight=""
         android:persistent="false" />
 
+    <com.aokp.romcontrol.widgets.SeekBarPreferenceCham
+        android:key="qs_transparent_header"
+        android:title="@string/qs_transparent_header"
+        android:max="255"
+        AOKP:min="0"
+        AOKP:unitsLeft=""
+        AOKP:unitsRight=""
+        android:persistent="false" />
+
      <ListPreference
         android:key="sysui_qs_num_rows"
         android:title="@string/qs_num_rows_title"
