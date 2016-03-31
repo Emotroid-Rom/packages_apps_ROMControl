@@ -770,4 +770,6 @@
   <string name="qs_num_columns_showing">Se muestran %1$s tiles por fila </string>
   <string name="qs_num_rows_title">Número de filas de tiles </string>
   <string name="qs_num_rows_showing">Se muestran %1$s filas de tiles</string>
+  <string name="block_on_secure_keyguard_title">Deshabilitar los accesos rápidos en la pantalla de bloqueo</string>
+  <string name="block_on_secure_keyguard_summary">Aumenta la seguridad de tu bloqueo desactivando este acceso</string>
 </resources>

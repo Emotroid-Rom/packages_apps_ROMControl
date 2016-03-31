@@ -117,6 +117,13 @@
         android:title="@string/general_settings">
 
         <com.aokp.romcontrol.settings.SystemSettingSwitchPreference
+            android:key="block_on_secure_keyguard"
+            android:title="@string/block_on_secure_keyguard_title"
+            android:summary="@string/block_on_secure_keyguard_summary"
+            android:persistent="false"
+            android:defaultValue="true"/>
+
+        <com.aokp.romcontrol.settings.SystemSettingSwitchPreference
             android:key="lockscreen_quick_unlock_control"
             android:title="@string/unlock_quick_unlock_control_title"
             android:summary="@string/unlock_quick_unlock_control_summary" />

@@ -917,5 +917,9 @@
     <!-- QS Tiles Rows -->
     <string name="qs_num_rows_title">Number of QS rows</string>
     <string name="qs_num_rows_showing">%1$s rows are shown</string>
+
+    <!-- Quick settings disable on lockscreen -->
+    <string name="block_on_secure_keyguard_title">Disable quick settings on lockscreen</string>
+    <string name="block_on_secure_keyguard_summary">Disables quick settings in the keyguard for a secure lock only</string>
     
 </resources>

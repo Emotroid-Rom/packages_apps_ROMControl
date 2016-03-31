@@ -46,6 +46,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import cyanogenmod.providers.CMSettings;
+import org.cyanogenmod.internal.util.CmLockPatternUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +85,7 @@ public class LockScreenSettingsFragment extends Fragment {
         private static final String KEY_WALLPAPER_SET = "lockscreen_wallpaper_set";
         private static final String KEY_WALLPAPER_CLEAR = "lockscreen_wallpaper_clear";
         private static final String KEY_LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
+        private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 
         private static final String PREF_CAT_COLORS =
                 "weather_cat_colors";
@@ -105,6 +107,7 @@ public class LockScreenSettingsFragment extends Fragment {
         private Preference mSetWallpaper;
         private Preference mClearWallpaper;
         private SeekBarPreferenceCham mBlurRadius;
+        private SwitchPreference mBlockOnSecureKeyguard;
 
         private static final int MONOCHROME_ICON = 0;
         private static final int DEFAULT_COLOR = 0xffffffff;
@@ -122,6 +125,8 @@ public class LockScreenSettingsFragment extends Fragment {
         private ColorPickerPreference mIconColor;
 
         private ContentResolver mResolver;
+
+        private static final int MY_USER_ID = UserHandle.myUserId();
 
         protected void removePreference(String key) {
             Preference pref = findPreference(key);
@@ -144,6 +149,7 @@ public class LockScreenSettingsFragment extends Fragment {
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.fragment_lockscreen_settings);
             ContentResolver resolver = getActivity().getContentResolver();
+            final CmLockPatternUtils lockPatternUtils = new CmLockPatternUtils(getActivity());
 
             mSetWallpaper = (Preference) findPreference(KEY_WALLPAPER_SET);
             mClearWallpaper = (Preference) findPreference(KEY_WALLPAPER_CLEAR);
@@ -152,6 +158,16 @@ public class LockScreenSettingsFragment extends Fragment {
             mBlurRadius.setValue(Settings.System.getInt(resolver,
                     Settings.System.LOCKSCREEN_BLUR_RADIUS, 14));
             mBlurRadius.setOnPreferenceChangeListener(this);
+
+            // Block QS on secure LockScreen
+            mBlockOnSecureKeyguard = (SwitchPreference) findPreference(PREF_BLOCK_ON_SECURE_KEYGUARD);
+            if (lockPatternUtils.isSecure(MY_USER_ID)) {
+                mBlockOnSecureKeyguard.setChecked(Settings.Secure.getIntForUser(resolver,
+                    Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 1, UserHandle.USER_CURRENT) == 1);
+                mBlockOnSecureKeyguard.setOnPreferenceChangeListener(this);
+            } else if (mBlockOnSecureKeyguard != null) {
+                prefSet.removePreference(mBlockOnSecureKeyguard);
+            }
 
             mResolver = getActivity().getContentResolver();
 
@@ -312,6 +328,11 @@ public class LockScreenSettingsFragment extends Fragment {
                 Settings.System.putInt(mResolver,
                         Settings.System.LOCK_SCREEN_WEATHER_ICON_COLOR, intHex);
                 preference.setSummary(hex);
+                return true;
+            } else if (preference == mBlockOnSecureKeyguard) {
+                Settings.Secure.putInt(resolver,
+                    Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
+                    (Boolean) newValue ? 1 : 0);
                 return true;
             }
             return false;
