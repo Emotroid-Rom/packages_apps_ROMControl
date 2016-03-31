@@ -52,6 +52,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.aokp.romcontrol.R;
+import com.aokp.romcontrol.widgets.SeekBarPreferenceCham;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -81,6 +82,8 @@ public class NotificationsDrawerFragment extends Fragment {
 
         private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
 
+        private static final String PREF_QS_TRANSPARENT_SHADE = "qs_transparent_shade";
+
         private static final String PREF_CLEAR_ALL_ICON_COLOR =
                 "notification_drawer_clear_all_icon_color";
 
@@ -95,6 +98,8 @@ public class NotificationsDrawerFragment extends Fragment {
         private ListPreference mNumRows;
 
         private ListPreference mQuickPulldown;
+
+        private SeekBarPreferenceCham mQSShadeAlpha;
 
         private ColorPickerPreference mClearAllIconColor;
 
@@ -129,6 +134,14 @@ public class NotificationsDrawerFragment extends Fragment {
             mNumRows.setValue(String.valueOf(numRows));
             updateNumRowsSummary(numRows);
             mNumRows.setOnPreferenceChangeListener(this);
+
+            // QS shade alpha
+            mQSShadeAlpha =
+                    (SeekBarPreferenceCham) prefSet.findPreference(PREF_QS_TRANSPARENT_SHADE);
+            int qSShadeAlpha = Settings.System.getInt(mResolver,
+                    Settings.System.QS_TRANSPARENT_SHADE, 255);
+            mQSShadeAlpha.setValue(qSShadeAlpha / 1);
+            mQSShadeAlpha.setOnPreferenceChangeListener(this);
 
             mQuickPulldown = (ListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
 
@@ -203,7 +216,12 @@ public class NotificationsDrawerFragment extends Fragment {
                 Settings.System.putIntForUser(mResolver, Settings.System.QS_NUM_TILE_ROWS,
                         numRows, UserHandle.USER_CURRENT);
                 updateNumRowsSummary(numRows);
-                return true;               
+                return true;
+            } else if (preference == mQSShadeAlpha) {
+                int alpha = (Integer) newValue;
+                Settings.System.putInt(resolver,
+                        Settings.System.QS_TRANSPARENT_SHADE, alpha * 1);
+                return true;              
             }
             return false;
         }
