@@ -24,13 +24,15 @@ import android.app.WallpaperManager;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.database.ContentObserver;
 import android.net.Uri;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -166,7 +168,7 @@ public class LockScreenSettingsFragment extends Fragment {
                     Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 1, UserHandle.USER_CURRENT) == 1);
                 mBlockOnSecureKeyguard.setOnPreferenceChangeListener(this);
             } else if (mBlockOnSecureKeyguard != null) {
-                prefSet.removePreference(mBlockOnSecureKeyguard);
+                removePreference(PREF_BLOCK_ON_SECURE_KEYGUARD);
             }
 
             mResolver = getActivity().getContentResolver();
