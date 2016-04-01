@@ -36,6 +36,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.text.Spannable;
 import android.text.TextUtils;
@@ -48,6 +49,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.android.internal.util.aokp.AOKPUtils;
 import cyanogenmod.providers.CMSettings;
 import org.cyanogenmod.internal.logging.CMMetricsLogger;
 
@@ -97,6 +99,7 @@ public class StatusbarSettingsFragment extends Fragment {
         private static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
         private static final String STATUS_BAR_CARRIER_COLOR = "status_bar_carrier_color";
         private static final String STATUS_BAR_CARRIER_FONT_SIZE  = "status_bar_carrier_font_size";
+        private static final String SHOW_FOURG = "show_fourg";
 
         static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 
@@ -110,6 +113,7 @@ public class StatusbarSettingsFragment extends Fragment {
         private String mCustomCarrierLabelText;
         private ColorPickerPreference mCarrierColorPicker;
         private SeekBarPreference mStatusBarCarrierSize;
+        private SwitchPreference mShowFourG;
 
         private boolean mCheckPreferences;
 
@@ -136,6 +140,15 @@ public class StatusbarSettingsFragment extends Fragment {
             } catch (Exception e) {
                 Log.e(TAG, "can't access systemui resources",e);
                 return null;
+            }
+
+            // Show 4G
+            mShowFourG = (SwitchPreference) findPreference(SHOW_FOURG);
+            if (AOKPUtils.isWifiOnly(getActivity())) {
+                prefSet.removePreference(mShowFourG);
+            } else {
+                mShowFourG.setChecked((Settings.System.getInt(resolver,
+                Settings.System.SHOW_FOURG, 0) == 1));
             }
 
             mStatusBarTemperature = (ListPreference) findPreference(STATUS_BAR_TEMPERATURE);
@@ -262,6 +275,11 @@ public class StatusbarSettingsFragment extends Fragment {
                 });
                 alert.setNegativeButton(getString(android.R.string.cancel), null);
                 alert.show();
+            } else if (preference == mShowFourG) {
+                boolean checked = ((SwitchPreference)preference).isChecked();
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        Settings.System.SHOW_FOURG, checked ? 1:0);
+                return true;
             }
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
@@ -321,14 +339,14 @@ public class StatusbarSettingsFragment extends Fragment {
                 Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                         Settings.System.STATUS_BAR_CARRIER_COLOR, intHex);
                 return true;
-             } else if (preference == mShowCarrierLabel) {
+            } else if (preference == mShowCarrierLabel) {
                 int showCarrierLabel = Integer.valueOf((String) newValue);
                 int index = mShowCarrierLabel.findIndexOfValue((String) newValue);
                 Settings.System.putIntForUser(resolver, Settings.System.
                     STATUS_BAR_SHOW_CARRIER, showCarrierLabel, UserHandle.USER_CURRENT);
                 mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
                 return true;
-             } else if (preference == mStatusBarCarrierSize) {
+            } else if (preference == mStatusBarCarrierSize) {
                 int width = ((Integer)newValue).intValue();
                 Settings.System.putInt(getActivity().getContentResolver(),
                         Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, width);

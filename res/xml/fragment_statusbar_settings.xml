@@ -104,6 +104,12 @@
         android:summary="@string/status_bar_notif_count_summary"
         android:defaultValue="false" />
 
+    <SwitchPreference
+        android:key="show_fourg"
+        android:title="@string/show_fourg_title"
+        android:summary="@string/show_fourg_summary"
+        android:defaultValue="false" />
+
     <com.aokp.romcontrol.settings.SystemSettingSwitchPreference
         android:key="show_su_indicator"
         android:title="@string/su_indicator"
