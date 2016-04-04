@@ -256,12 +256,12 @@ public class WakelockBlockerFragment extends Fragment {
         menu.add(0, MENU_RELOAD, 0, R.string.wakelock_blocker_reload)
                 .setIcon(com.android.internal.R.drawable.ic_menu_refresh)
                 .setAlphabeticShortcut('r')
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER |
                         MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         menu.add(0, MENU_SAVE, 0, R.string.wakelock_blocker_save)
                 .setIcon(R.drawable.ic_wakelockblocker_save)
                 .setAlphabeticShortcut('s')
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER |
                         MenuItem.SHOW_AS_ACTION_WITH_TEXT);
     }
 

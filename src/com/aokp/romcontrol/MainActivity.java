@@ -18,9 +18,11 @@ package com.aokp.romcontrol;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -64,6 +66,8 @@ import com.aokp.romcontrol.fragments.LockScreenSettingsFragment;
 import com.aokp.romcontrol.fragments.NavigationDrawerFragment;
 import com.aokp.romcontrol.fragments.NotificationsDrawerFragment;
 import com.aokp.romcontrol.fragments.PowerMenuSettingsFragment;
+
+import com.aokp.romcontrol.util.Helpers;
 
 import cyanogenmod.providers.CMSettings;
 
@@ -201,6 +205,8 @@ public class MainActivity extends Activity
             item.setChecked(!checked);
             setLauncherIconEnabled(!checked);
             return true;
+        } else if (id == R.id.action_show_reboot_icon) {
+            reload();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -216,4 +222,19 @@ public class MainActivity extends Activity
         int componentStatus = p.getComponentEnabledSetting(new ComponentName(this, LauncherActivity.class));
         return componentStatus != PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
     }
+
+    private void reload() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle(R.string.restart_systemui);
+        alertDialog.setMessage(R.string.restart_systemui_reset_message);
+        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Helpers.restartSystemUI();
+            }
+        });
+        alertDialog.setNegativeButton(R.string.cancel, null);
+        alertDialog.create().show();
+    }
+
+
 }

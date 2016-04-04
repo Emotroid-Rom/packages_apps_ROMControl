@@ -771,9 +771,11 @@
   <string name="qs_num_rows_title">Número de filas de tiles </string>
   <string name="qs_num_rows_showing">Se muestran %1$s filas de tiles</string>
   <string name="block_on_secure_keyguard_title">Deshabilitar los accesos rápidos en la pantalla de bloqueo</string>
-  <string name="block_on_secure_keyguard_summary">Aumenta la seguridad de tu bloqueo desactivando este acceso</string>
+  <string name="block_on_secure_keyguard_summary">Aumenta la seguridad de tu bloqueo</string>
   <string name="qs_transparent_shade">Transparencia del fondo de QS</string>
   <string name="qs_transparent_header">Transparencia del encabezado de QS</string>
   <string name="show_fourg_title">Mostrar 4G en lugar de LTE</string>
   <string name="show_fourg_summary">Sustituye indicador LTE por 4G</string>
+  <string name="restart_systemui">Reiniciar SystemUI</string>
+  <string name="restart_systemui_reset_message">¿Reiniciar SystemUI para aplicar nuevos valores?</string>
 </resources>
