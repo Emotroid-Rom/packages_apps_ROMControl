@@ -23,11 +23,22 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +46,15 @@ import android.view.ViewGroup;
 
 import com.aokp.romcontrol.R;
 import com.aokp.romcontrol.util.Helpers;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.DataOutputStream;
+ 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 public class GeneralSettingsFragment extends Fragment {
 
@@ -55,7 +75,8 @@ public class GeneralSettingsFragment extends Fragment {
         return v;
     }
 
-    public static class GeneralSettingsPreferenceFragment extends PreferenceFragment {
+    public static class GeneralSettingsPreferenceFragment extends PreferenceFragment 
+            implements OnPreferenceChangeListener {
 
         public GeneralSettingsPreferenceFragment() {
 
@@ -65,9 +86,15 @@ public class GeneralSettingsFragment extends Fragment {
         private static final String KEY_LOCKCLOCK = "lock_clock";
         // Package name of the cLock app
         public static final String LOCKCLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
+        private static final String DOZE_POWERSAVE_PROPERTY = "persist.sys.doze_powersave";
+        private static final String DOZE_POWERSAVE_KEY = "doze_powersave";
+        private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
+        private final ArrayList<SwitchPreference> mResetSwitchPrefs  = new ArrayList<SwitchPreference>();
 
         private Context mContext;
         private Preference mLockClock;
+        private SwitchPreference mDozePowersave;
+        private boolean mDontPokeProperties;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -88,7 +115,54 @@ public class GeneralSettingsFragment extends Fragment {
             if (!Helpers.isPackageInstalled(LOCKCLOCK_PACKAGE_NAME, pm)) {
                 prefSet.removePreference(mLockClock);
             }
+            mDozePowersave = findAndInitSwitchPref(DOZE_POWERSAVE_KEY);
+            updateDozePowersaveOptions();
             return prefSet;
+        }
+
+        private SwitchPreference findAndInitSwitchPref(String key) {
+            SwitchPreference pref = (SwitchPreference) findPreference(key);
+            if (pref == null) {
+                throw new IllegalArgumentException("Cannot find preference with key = " + key);
+            }
+            mAllPrefs.add(pref);
+            mResetSwitchPrefs.add(pref);
+            return pref;
+        }
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object objValue) {
+            return false;
+        }
+
+        @Override
+        public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+            if (preference == mDozePowersave) {
+                writeDozePowersaveOptions();
+            } else {
+                return super.onPreferenceTreeClick(preferenceScreen, preference);
+            }
+            return false;
+        }
+
+        void pokeSystemProperties() {
+            if (!mDontPokeProperties) {
+                //noinspection unchecked
+                (new SystemPropPoker()).execute();
+            }
+        }
+     
+        private void updateDozePowersaveOptions() {
+            updateSwitchPreference(mDozePowersave, SystemProperties.getBoolean(DOZE_POWERSAVE_PROPERTY, false));
+        }
+        
+        void updateSwitchPreference(SwitchPreference switchPreference, boolean value) {
+            switchPreference.setChecked(value);
+        }
+
+         private void writeDozePowersaveOptions() {
+            SystemProperties.set(DOZE_POWERSAVE_PROPERTY, mDozePowersave.isChecked() ? "true" : "false");
+            pokeSystemProperties();
         }
 
         @Override
@@ -99,6 +173,33 @@ public class GeneralSettingsFragment extends Fragment {
         @Override
         public void onResume() {
             super.onResume();
+        }
+
+        static class SystemPropPoker extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected Void doInBackground(Void... params) {
+                String[] services;
+                try {
+                    services = ServiceManager.listServices();
+                } catch (RemoteException e) {
+                    return null;
+                }
+                for (String service : services) {
+                    IBinder obj = ServiceManager.checkService(service);
+                    if (obj != null) {
+                        Parcel data = Parcel.obtain();
+                        try {
+                            obj.transact(IBinder.SYSPROPS_TRANSACTION, data, null, 0);
+                        } catch (RemoteException e) {
+                        } catch (Exception e) {
+                            Log.i(TAG, "Someone wrote a bad service '" + service
+                                    + "' that doesn't like to be poked: " + e);
+                        }
+                        data.recycle();
+                    }
+                }
+                return null;
+            }
         }
     }
 }
