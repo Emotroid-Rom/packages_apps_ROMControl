@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2015 The Android Open Kang Project
+ * Copyright (C) 2016 Emotroid-Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,6 +67,11 @@ import com.aokp.romcontrol.fragments.LockScreenSettingsFragment;
 import com.aokp.romcontrol.fragments.NavigationDrawerFragment;
 import com.aokp.romcontrol.fragments.NotificationsDrawerFragment;
 import com.aokp.romcontrol.fragments.PowerMenuSettingsFragment;
+
+import com.aokp.romcontrol.fragments.display.DisplayFragment;
+import com.aokp.romcontrol.fragments.display.DisplayMDNIEActivity;
+
+import com.aokp.romcontrol.fragments.display.MobileBroadcastReceiver;
 
 import com.aokp.romcontrol.util.Helpers;
 
@@ -163,6 +169,10 @@ public class MainActivity extends Activity
 
             case 9:
                 fragment = new AppLauncherTabHostFragment();
+                break;
+
+            case 10:
+                fragment = new DisplayFragment();
                 break;
         }
         return fragment;

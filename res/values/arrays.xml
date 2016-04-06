@@ -29,6 +29,8 @@
         <item>@string/category_sound</item>
         <item>@string/category_ui</item>
         <item>@string/category_app_launcher</item>
+        <item>@string/category_display_launcher</item>
+
     </string-array>
     <string-array name="navigation_drawer_values" translatable="false">
         <item>general</item>
@@ -41,6 +43,7 @@
         <item>sound</item>
         <item>ui</item>
         <item>applauncher</item>
+        <item>display</item>
     </string-array>
     <string-array name="navigation_drawer_icons" translatable="false">
         <item>@drawable/ic_rom_control_general</item>
@@ -53,6 +56,7 @@
         <item>@drawable/ic_rom_control_sound</item>
         <item>@drawable/ic_rom_control_animations</item>
         <item>@drawable/ic_rom_control_ribbon</item>
+        <item>@drawable/ic_rom_control_display</item>
     </string-array>
 
     <string-array name="power_menu_actions_array" translatable="false">

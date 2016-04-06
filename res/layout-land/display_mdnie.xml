@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (C) 2016 Emotroid-Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<RelativeLayout 
+    android:orientation="horizontal" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView 
+        android:id="@id/imageView1" 
+        android:layout_width="500dp" 
+        android:layout_height="fill_parent" 
+        android:layout_marginLeft="28.0dip" 
+        android:src="@drawable/formissy" 
+        android:layout_alignParentLeft="true" 
+        android:layout_centerVertical="true"
+        android:scaleType="fitCenter" />
+    <RadioGroup 
+        android:id="@id/radioGroup" 
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent" 
+        android:layout_marginTop="28.0dip" 
+        android:layout_toRightOf="@id/imageView1" 
+        android:layout_alignParentTop="true">
+        <RadioButton 
+            android:id="@id/radioButton" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:text="@string/dinamic_mode" 
+            android:layout_toRightOf="@id/imageView1" 
+            android:layout_below="@id/radioButton2" 
+            android:layout_alignParentRight="true" 
+            android:onClick="DynamicMode" />
+        <RadioButton 
+            android:id="@id/radioButton2" 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content" 
+            android:text="@string/standard_mode"
+            android:layout_toRightOf="@id/imageView1" 
+            android:layout_below="@id/radioButton3" 
+            android:layout_alignParentRight="true" 
+            android:onClick="StandardMode" />
+        <RadioButton 
+            android:id="@id/radioButton3" 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content" 
+            android:text="@string/natural_mode"
+            android:layout_toRightOf="@id/imageView1" 
+            android:layout_below="@id/radioButton4" 
+            android:layout_alignParentRight="true" 
+            android:onClick="NaturalMode" />
+        <RadioButton android:id="@id/radioButton4" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:text="@string/movie_mode"
+            android:layout_toRightOf="@id/imageView1" 
+            android:layout_below="@id/radioButton5" 
+            android:layout_alignParentRight="true" 
+            android:onClick="MovieMode" />
+        <RadioButton 
+            android:id="@id/radioButton5" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:text="@string/auto_mode"
+            android:layout_toRightOf="@id/imageView1" 
+            android:layout_below="@id/checkBox" 
+            android:layout_alignParentRight="true" 
+            android:onClick="AutoMode" />
+    </RadioGroup>
+    <CheckBox 
+        android:id="@id/checkBox" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="23.0dip" 
+        android:text="@string/set_at_boot"
+        android:layout_toRightOf="@id/imageView1" 
+        android:layout_alignBottom="@id/imageView1" 
+        android:onClick="SetAtBootClick" />
+    <Button 
+        android:id="@id/button2" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="53.0dip" 
+        android:text="@string/hbmoff" 
+        android:layout_toRightOf="@id/imageView1" 
+        android:layout_alignBottom="@id/imageView1" 
+        android:onClick="FlipHBMoff" />
+    <Button 
+        android:id="@id/button" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="95.0dip" 
+        android:text="@string/hbmon" 
+        android:layout_toRightOf="@id/imageView1" 
+        android:layout_above="@id/imageView1" 
+        android:layout_alignBottom="@id/imageView1" 
+        android:onClick="FlipHBMon" />
+</RelativeLayout>

@@ -19,4 +19,14 @@
 
 <resources>
     <item type="id" name="drag_handle" />
+    <item type="id" name="imageView1">false</item>
+    <item type="id" name="button2">false</item>
+    <item type="id" name="button">false</item>
+    <item type="id" name="radioGroup">false</item>
+    <item type="id" name="radioButton">false</item>
+    <item type="id" name="radioButton2">false</item>
+    <item type="id" name="radioButton3">false</item>
+    <item type="id" name="radioButton4">false</item>
+    <item type="id" name="radioButton5">false</item>
+    <item type="id" name="checkBox">false</item>
 </resources>

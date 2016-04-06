@@ -56,6 +56,7 @@
     <string name="category_sound">Sound</string>
     <string name="category_ui">User Interface</string>
     <string name="category_app_launcher">App launcher</string>
+    <string name="category_display_launcher">Display</string>
 
     <!-- General -->
     <string name="general_settings">General settings</string>
@@ -944,4 +945,14 @@
 	<!-- Setting Category title to Lock_clock -->
 	<string name="lock_clock_pref_title">LockClock Settings</string>
 
+	<string name="hbmon">HBM on</string>
+	<string name="hbmoff">HBM off</string>
+	<string name="dinamic_mode">Dynamic Mode (AMOLED cinema)</string>
+	<string name="standard_mode">Standard Mode (AMOLED photo)</string>
+	<string name="natural_mode">Natural Mode (basic)</string>
+	<string name="movie_mode">Movie Mode</string>
+	<string name="auto_mode">Auto Mode (adaptive Display)</string>
+	<string name="set_at_boot">Set at boot</string>
+	<string name="display_pref_title">MDNIE Tuner</string>
+	<string name="display_pref_summary">Change MDNIE mode for Amoled Displays</string>
 </resources>

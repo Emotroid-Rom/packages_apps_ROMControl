@@ -99,6 +99,11 @@
         <activity android:name="com.aokp.romcontrol.fragments.PowerMenuSettingsFragment" />
         <activity android:name="com.aokp.romcontrol.fragments.Utils" />
 
+        <activity android:name="com.aokp.romcontrol.fragments.display.DisplayFragment" />
+        <activity android:name="com.aokp.romcontrol.fragments.display.DisplayMDNIEActivity" />
+        <receiver android:name=".fragments.display.MobileBroadcastReceiver" android:enabled="true">
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+        </receiver>
     </application>
 
 </manifest>
