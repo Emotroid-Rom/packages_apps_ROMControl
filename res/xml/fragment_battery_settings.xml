@@ -34,4 +34,8 @@
         android:entries="@array/status_bar_battery_percentage_entries"
         android:entryValues="@array/status_bar_battery_percentage_values" />
 
+    <Preference
+        android:key="batterybar"
+        android:title="@string/battery_bar" />
+
 </PreferenceScreen>

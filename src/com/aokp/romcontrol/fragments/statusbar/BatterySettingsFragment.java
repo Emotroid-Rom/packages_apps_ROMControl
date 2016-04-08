@@ -91,8 +91,12 @@ public class BatterySettingsFragment extends Fragment {
         private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
         private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
 
+        private String PREF_BATTERY_BAR = "batterybar";
+
         private ListPreference mStatusBarBattery;
         private ListPreference mStatusBarBatteryShowPercent;
+
+        private Preference mBatteryBar;
 
         private boolean mCheckPreferences;
 
@@ -128,6 +132,8 @@ public class BatterySettingsFragment extends Fragment {
             mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
             enableStatusBarBatteryDependents(batteryStyle);
             mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
+
+            mBatteryBar = prefSet.findPreference(PREF_BATTERY_BAR);
 
             setHasOptionsMenu(true);
             mCheckPreferences = true;
@@ -183,6 +189,17 @@ public class BatterySettingsFragment extends Fragment {
             return false;
         }
 
+        @Override
+        public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+            if (preference == mBatteryBar) {
+                Intent intent = new Intent(getActivity(), BatteryBar.class);
+                getActivity().startActivity(intent);
+              } else {
+                  return super.onPreferenceTreeClick(preferenceScreen, preference);
+              }
+             return false;
+         }
+         
         private void enableStatusBarBatteryDependents(int batteryIconStyle) {
             if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_HIDDEN ||
                     batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT) {
