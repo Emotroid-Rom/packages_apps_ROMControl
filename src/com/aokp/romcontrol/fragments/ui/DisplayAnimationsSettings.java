@@ -80,11 +80,13 @@ public class DisplayAnimationsSettings extends Fragment {
         private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
         private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
         private static final String SCROLLINGCACHE_DEFAULT = "1";
+        private static final String POWER_MENU_ANIMATIONS = "power_menu_animations";
 
         private ListPreference mListViewAnimation;
         private ListPreference mListViewInterpolator;
         private ListPreference mToastAnimation;
         private ListPreference mScrollingCachePref;
+        private ListPreference mPowerMenuAnimations;
         private Context mContext;
 
         @Override
@@ -131,6 +133,13 @@ public class DisplayAnimationsSettings extends Fragment {
                     SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
             mScrollingCachePref.setOnPreferenceChangeListener(this);
 
+            // Power Menu Animations
+            mPowerMenuAnimations = (ListPreference) prefSet.findPreference(POWER_MENU_ANIMATIONS);
+            mPowerMenuAnimations.setValue(String.valueOf(Settings.System.getInt(
+                    resolver, Settings.System.POWER_MENU_ANIMATIONS, 0)));
+            mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
+            mPowerMenuAnimations.setOnPreferenceChangeListener(this);
+
             return prefSet;
         }
 
@@ -151,6 +160,7 @@ public class DisplayAnimationsSettings extends Fragment {
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object objValue) {
+            ContentResolver resolver = getActivity().getContentResolver();
             final String key = preference.getKey();
             if (KEY_LISTVIEW_ANIMATION.equals(key)) {
                 int value = Integer.parseInt((String) objValue);
@@ -182,6 +192,13 @@ public class DisplayAnimationsSettings extends Fragment {
                     SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String)objValue);
                 return true;
                 }
+            }
+            if (preference == mPowerMenuAnimations) {
+                Settings.System.putInt(resolver, Settings.System.POWER_MENU_ANIMATIONS,
+                        Integer.valueOf((String) objValue));
+                mPowerMenuAnimations.setValue(String.valueOf(objValue));
+                mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
+                return true;
             }
             return false;
         }
