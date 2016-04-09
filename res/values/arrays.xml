@@ -25,7 +25,6 @@
         <item>@string/category_notifications_drawer</item>
         <item>@string/category_hardware_keys</item>
         <item>@string/category_power_menu</item>
-        <item>@string/category_navbar</item>
         <item>@string/category_sound</item>
         <item>@string/category_ui</item>
         <item>@string/category_app_launcher</item>
@@ -39,7 +38,6 @@
         <item>notifications_drawer</item>
         <item>hardware_keys</item>
         <item>power_menu</item>
-        <item>navbar</item>
         <item>sound</item>
         <item>ui</item>
         <item>applauncher</item>
@@ -52,7 +50,6 @@
         <item>@drawable/ic_rom_control_toggles</item>
         <item>@drawable/ic_rom_control_hardware_keys</item>
         <item>@drawable/ic_rom_control_power_menu</item>
-        <item>@drawable/ic_rom_control_navigation_bar</item>
         <item>@drawable/ic_rom_control_sound</item>
         <item>@drawable/ic_rom_control_animations</item>
         <item>@drawable/ic_rom_control_ribbon</item>
@@ -607,69 +604,6 @@
         <item>21</item>
         <item>22</item>
         <item>23</item>
-    </string-array>
-
-    <!-- Navigation bar custom dimensions -->
-    <string-array name="navigation_bar_width_entries" translatable="false">
-        <item>@string/navigation_bar_size_42_dp_default</item>
-        <item>@string/navigation_bar_size_40_dp</item>
-        <item>@string/navigation_bar_size_36_dp</item>
-        <item>@string/navigation_bar_size_30_dp</item>
-        <item>@string/navigation_bar_size_24_dp</item>
-        <item>@string/navigation_bar_size_0_dp</item>
-    </string-array>
-
-    <string-array name="navigation_bar_width" translatable="false">
-        <item>42</item>
-        <item>40</item>
-        <item>36</item>
-        <item>30</item>
-        <item>24</item>
-        <item>0</item>
-    </string-array>
-
-    <string-array name="navigation_bar_height_entries" translatable="false">
-        <item>@string/navigation_bar_size_48_dp_default</item>
-        <item>@string/navigation_bar_size_44_dp</item>
-        <item>@string/navigation_bar_size_42_dp</item>
-        <item>@string/navigation_bar_size_40_dp</item>
-        <item>@string/navigation_bar_size_36_dp</item>
-        <item>@string/navigation_bar_size_30_dp</item>
-        <item>@string/navigation_bar_size_24_dp</item>
-        <item>@string/navigation_bar_size_0_dp</item>
-    </string-array>
-
-    <string-array name="navigation_bar_height" translatable="false">
-        <item>48</item>
-        <item>44</item>
-        <item>42</item>
-        <item>40</item>
-        <item>36</item>
-        <item>30</item>
-        <item>24</item>
-        <item>0</item>
-    </string-array>
-
-    <string-array name="navigation_bar_height_entries_landscape" translatable="false">
-        <item>@string/navigation_bar_size_48_dp_default</item>
-        <item>@string/navigation_bar_size_44_dp</item>
-        <item>@string/navigation_bar_size_42_dp</item>
-        <item>@string/navigation_bar_size_40_dp</item>
-        <item>@string/navigation_bar_size_36_dp</item>
-        <item>@string/navigation_bar_size_30_dp</item>
-        <item>@string/navigation_bar_size_24_dp</item>
-        <item>@string/navigation_bar_size_0_dp</item>
-    </string-array>
-
-    <string-array name="navigation_bar_height_landscape" translatable="false">
-        <item>48</item>
-        <item>44</item>
-        <item>42</item>
-        <item>40</item>
-        <item>36</item>
-        <item>30</item>
-        <item>24</item>
-        <item>0</item>
     </string-array>
 
     <!-- Volume key cursor control -->

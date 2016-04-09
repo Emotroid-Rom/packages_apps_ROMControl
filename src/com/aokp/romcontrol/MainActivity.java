@@ -41,10 +41,6 @@ import com.aokp.romcontrol.fragments.general.GeneralSettingsFragment;
 import com.aokp.romcontrol.fragments.general.RecentsSettingsFragment;
 import com.aokp.romcontrol.fragments.general.WakelockBlockerFragment;
 
-import com.aokp.romcontrol.fragments.navbar.NavbarTabHostFragment;
-import com.aokp.romcontrol.fragments.navbar.NavbarArrangeFragment;
-import com.aokp.romcontrol.fragments.navbar.NavbarSettingsFragment;
-
 import com.aokp.romcontrol.fragments.sound.SoundTabHostFragment;
 import com.aokp.romcontrol.fragments.sound.SoundSettingsFragment;
 import com.aokp.romcontrol.fragments.sound.LiveVolumeFragment;
@@ -158,22 +154,18 @@ public class MainActivity extends Activity
                 break;
 
             case 6:
-                fragment = new NavbarTabHostFragment();
-                break;
-
-            case 7:
                 fragment = new SoundTabHostFragment();
                 break;
 
-            case 8:
+            case 7:
                 fragment = new UITabHostFragment();
                 break;
 
-            case 9:
+            case 8:
                 fragment = new AppLauncherTabHostFragment();
                 break;
 
-            case 10:
+            case 9:
                 fragment = new DisplayFragment();
                 break;
         }
