@@ -48,8 +48,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.aokp.romcontrol.R;
+import com.aokp.romcontrol.settings.NumberPickerPreference;
 
-public class PowerMenuSettingsFragment extends Fragment {
+public class PowerMenuSettingsFragment extends Fragment 
+        implements OnPreferenceChangeListener{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class PowerMenuSettingsFragment extends Fragment {
         }
 
         final static String TAG = "PowerMenuActions";
+        private static final String SCREENSHOT_DELAY = "screenshot_delay";
 
         private ContentResolver mContentResolver;
 
@@ -85,6 +88,14 @@ public class PowerMenuSettingsFragment extends Fragment {
         private String[] mAvailableActions;
         private String[] mAllActions;
 
+        private NumberPickerPreference mScreenshotDelay;
+
+        private ContentResolver mCr;
+        private PreferenceScreen mPrefSet;
+
+        private static final int MIN_DELAY_VALUE = 1;
+        private static final int MAX_DELAY_VALUE = 30;
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -93,6 +104,10 @@ public class PowerMenuSettingsFragment extends Fragment {
             addPreferencesFromResource(R.xml.fragment_powermenu_settings);
 
             mContext = getActivity().getApplicationContext();
+
+            mPrefSet = getPreferenceScreen();
+
+            mCr = getActivity().getContentResolver();
 
             mAvailableActions = getActivity().getResources().getStringArray(
                     R.array.power_menu_actions_array);
@@ -129,6 +144,14 @@ public class PowerMenuSettingsFragment extends Fragment {
                     mSilentPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_ASSIST);
                 }
             }
+            mScreenshotDelay = (NumberPickerPreference) mPrefSet.findPreference(
+                    SCREENSHOT_DELAY);
+            mScreenshotDelay.setOnPreferenceChangeListener(this);
+            mScreenshotDelay.setMinValue(MIN_DELAY_VALUE);
+            mScreenshotDelay.setMaxValue(MAX_DELAY_VALUE);
+            int ssDelay = Settings.System.getInt(mCr,
+                    Settings.System.SCREENSHOT_DELAY, 1);
+            mScreenshotDelay.setCurrentValue(ssDelay);
 
             getUserConfig();
         }
@@ -259,6 +282,17 @@ public class PowerMenuSettingsFragment extends Fragment {
                 return super.onPreferenceTreeClick(preferenceScreen, preference);
             }
             return true;
+        }
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            if (preference == mScreenshotDelay) {
+                int value = Integer.parseInt(newValue.toString());
+                Settings.System.putInt(mCr, Settings.System.SCREENSHOT_DELAY,
+                        value);
+                return true;
+            }
+            return false;
         }
 
         private boolean settingsArrayContains(String preference) {

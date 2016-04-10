@@ -1002,6 +1002,6 @@
     <string name="gesture_anywhere_floating">Gesture Anywhere</string>
     <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
 
-=======
->>>>>>> parent of 6a47537... ROMControl: Add EmotionOTA [1/2]
+    <string name="powermenu_screenshot_delay_title">Set screenshot delay</string>   
+
 </resources>
