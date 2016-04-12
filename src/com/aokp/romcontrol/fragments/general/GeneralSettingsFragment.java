@@ -91,10 +91,15 @@ public class GeneralSettingsFragment extends Fragment {
         private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
         private final ArrayList<SwitchPreference> mResetSwitchPrefs  = new ArrayList<SwitchPreference>();
 
+        private static final String KEY_OTA = "update_settings";
+        public static final String OTA_PACKAGE_NAME = "com.emotion.ota";
+
         private Context mContext;
         private Preference mLockClock;
         private SwitchPreference mDozePowersave;
         private boolean mDontPokeProperties;
+        private Preference mOtapackage;
+
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -115,6 +120,14 @@ public class GeneralSettingsFragment extends Fragment {
             if (!Helpers.isPackageInstalled(LOCKCLOCK_PACKAGE_NAME, pm)) {
                 prefSet.removePreference(mLockClock);
             }
+
+            // Ota app check
+            mOtapackage = (Preference)
+                    prefSet.findPreference(KEY_OTA);
+            if (!Helpers.isPackageInstalled(OTA_PACKAGE_NAME, pm)) {
+                prefSet.removePreference(mOtapackage);
+            }
+
             mDozePowersave = findAndInitSwitchPref(DOZE_POWERSAVE_KEY);
             updateDozePowersaveOptions();
             return prefSet;

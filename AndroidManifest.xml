@@ -101,6 +101,8 @@
         <receiver android:name=".fragments.display.MobileBroadcastReceiver" android:enabled="true">
             <action android:name="android.intent.action.BOOT_COMPLETED" />
         </receiver>
+
+        <activity android:name="com.emotion.ota.MainActivity"/>
     </application>
 
 </manifest>

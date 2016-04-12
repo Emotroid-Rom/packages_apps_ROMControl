@@ -43,4 +43,17 @@
         </PreferenceScreen>
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="ota_package"
+        android:title="@string/ota_title" >
+    <!-- Updater -->
+        <PreferenceScreen
+                android:key="update_settings"
+                android:title="@string/updater_title">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.emotion.ota"
+                    android:targetClass="com.emotion.ota.MainActivity" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+  
 </PreferenceScreen>
