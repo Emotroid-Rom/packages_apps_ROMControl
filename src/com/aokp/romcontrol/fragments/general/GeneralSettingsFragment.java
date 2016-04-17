@@ -21,6 +21,7 @@ import android.app.ActivityManager;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.AsyncTask;
@@ -99,6 +100,13 @@ public class GeneralSettingsFragment extends Fragment {
         private SwitchPreference mDozePowersave;
         private boolean mDontPokeProperties;
         private Preference mOtapackage;
+        private Preference mStatsEmotion;
+
+        private static final String PREF_STATS_EMOTION = "emotion_stats";
+
+        public static final String STATS_PACKAGE_NAME = "com.aokp.romcontrol";
+        public static Intent INTENT_STATS = new Intent(Intent.ACTION_MAIN)
+                .setClassName(STATS_PACKAGE_NAME, STATS_PACKAGE_NAME + ".romstats.AnonymousStats");
 
 
         @Override
@@ -128,6 +136,8 @@ public class GeneralSettingsFragment extends Fragment {
                 prefSet.removePreference(mOtapackage);
             }
 
+            mStatsEmotion = prefSet.findPreference(PREF_STATS_EMOTION);
+
             mDozePowersave = findAndInitSwitchPref(DOZE_POWERSAVE_KEY);
             updateDozePowersaveOptions();
             return prefSet;
@@ -152,6 +162,8 @@ public class GeneralSettingsFragment extends Fragment {
         public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
             if (preference == mDozePowersave) {
                 writeDozePowersaveOptions();
+            } else if (preference == mStatsEmotion) {
+                startActivity(INTENT_STATS);
             } else {
                 return super.onPreferenceTreeClick(preferenceScreen, preference);
             }

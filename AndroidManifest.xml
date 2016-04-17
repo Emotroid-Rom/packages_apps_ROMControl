@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.MANAGE_APP_TOKENS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_FRAME_BUFFER" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SET_ACTIVITY_WATCHER" />
     <uses-permission android:name="android.permission.SET_ANIMATION_SCALE" />
@@ -103,6 +104,38 @@
         </receiver>
 
         <activity android:name="com.emotion.ota.MainActivity"/>
+
+        <activity android:name=".romstats.AnonymousStats"
+            android:label="@string/stats_title" >
+            <intent-filter>
+                <action android:name=".romstats.AnonymousStats" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".romstats.PreviewActivity" />
+
+        <receiver
+            android:name=".romstats.ReportingServiceManager"
+            android:enabled="true"
+            android:exported="false"
+            android:label="ReportingServiceManager" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false"/>
+
+        <service
+            android:name=".romstats.ReportingService"
+            android:enabled="true"
+            android:exported="false"
+            android:label="ReportingService" >
+        </service>
     </application>
 
 </manifest>

@@ -55,5 +55,8 @@
                     android:targetClass="com.emotion.ota.MainActivity" />
         </PreferenceScreen>
     </PreferenceCategory>
+    <Preference
+        android:key="emotion_stats"
+        android:title="@string/stats_title" />
   
 </PreferenceScreen>
