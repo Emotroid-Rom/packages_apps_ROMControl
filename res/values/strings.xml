@@ -963,4 +963,8 @@
     <string name="preview_romname_title">ROM Name</string>    
     <string name="preview_romversion_title">Emotion Version</string>
     <string name="preview_buildtype_title">Emotion Build Type</string>
+
+    <!-- Current on Lockscreen -->
+    <string name="lock_screen_show_current">Charging Current</string>
+    <string name="lock_screen_show_current_summary">Show Charging Current rate on lock screen</string>
 </resources>

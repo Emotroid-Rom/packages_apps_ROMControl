@@ -781,4 +781,6 @@
   <string name="restart_systemui_reset_message">¿Reiniciar SystemUI para aplicar nuevos valores?</string>
   <string name="set_at_boot">Aplicar al inicio</string>
   <string name="display_pref_summary">Cambiar el modo MDNIE para pantallas Amoled</string>
+  <string name="lock_screen_show_current">Carga corriente</string>
+  <string name="lock_screen_show_current_summary">Mostrar la carga actual en la pantalla de bloqueo</string>
 </resources>
