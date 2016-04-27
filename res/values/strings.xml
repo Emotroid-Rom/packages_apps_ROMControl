@@ -934,8 +934,8 @@
     <string name="anonymous_statistics_title">Emotion Stats</string>
     <string name="anonymous_statistics_summary">Help Emotion by opting into anonymous statistics reporting</string>
     <string name="anonymous_statistics_warning_title">About</string>
-    <string name="anonymous_statistics_warning">Opting into Emotion Stats will allow non-personal data to be submitted to 
-         our servers. The information submitted includes an unique identifier, which does not compromise your privacy or personal data. 
+    <string name="anonymous_statistics_warning">Opting into Emotion Stats will allow non-personal data to be submitted to
+         our servers. The information submitted includes an unique identifier, which does not compromise your privacy or personal data.
          The data is submitted every 7 days.\n\nFor an example of the data that is submitted, tap on Preview Data.</string>
  
     <string name="pref_settings">Settings</string>
@@ -967,4 +967,9 @@
     <!-- Current on Lockscreen -->
     <string name="lock_screen_show_current">Charging Current</string>
     <string name="lock_screen_show_current_summary">Show Charging Current rate on lock screen</string>
+
+    <!-- Hide Apps from Recents -->
+    <string name="hide_apps_from_recents_title">Hidden Apps</string>
+    <string name="hide_apps_from_recents_summary">Pick which apps to exclude from the recents panel.</string>
+
 </resources>

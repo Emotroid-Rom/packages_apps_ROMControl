@@ -43,6 +43,11 @@
             android:summaryOff="@string/recents_fullscreen_summary_disabled"
             android:defaultValue="false" />
 
+        <Preference
+            android:key="hide_app_from_recents"
+            android:title="@string/hide_apps_from_recents_title"
+            android:summary="@string/hide_apps_from_recents_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

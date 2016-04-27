@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Fragment;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.os.Bundle;
@@ -67,9 +68,18 @@ public class RecentsSettingsFragment extends Fragment {
         }
 
         private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+        private static final String PREF_HIDDEN_RECENTS_APPS_START = "hide_app_from_recents";
+
+        // Package name of the hidden recetns apps activity
+        public static final String HIDDEN_RECENTS_PACKAGE_NAME = "com.android.settings";
+        // Intent for launching the hidden recents actvity
+        public static Intent INTENT_HIDDEN_RECENTS_SETTINGS = new Intent(Intent.ACTION_MAIN)
+                .setClassName(HIDDEN_RECENTS_PACKAGE_NAME,
+                HIDDEN_RECENTS_PACKAGE_NAME + ".emotion.HAFRAppListActivity");
 
         private SwitchPreference mRecentsClearAll;
         private ListPreference mRecentsClearAllLocation;
+        private Preference mHiddenRecentsApps;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -91,6 +101,8 @@ public class RecentsSettingsFragment extends Fragment {
             mRecentsClearAllLocation.setValue(String.valueOf(location));
             mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntry());
             mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
+
+            mHiddenRecentsApps = (Preference) prefSet.findPreference(PREF_HIDDEN_RECENTS_APPS_START);
             return prefSet;
 
         }
@@ -115,6 +127,16 @@ public class RecentsSettingsFragment extends Fragment {
                         Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
                 mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntries()[index]);
                 return true;
+            }
+            return false;
+        }
+
+        @Override
+        public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+            if (preference == mHiddenRecentsApps) {
+                getActivity().startActivity(INTENT_HIDDEN_RECENTS_SETTINGS);
+            } else {
+                return super.onPreferenceTreeClick(preferenceScreen, preference);
             }
             return false;
         }
