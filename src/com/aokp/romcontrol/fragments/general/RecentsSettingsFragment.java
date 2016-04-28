@@ -66,9 +66,10 @@ public class RecentsSettingsFragment extends Fragment {
         public RecentsSettingsPreferenceFragment() {
 
         }
-
+        
         private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
         private static final String PREF_HIDDEN_RECENTS_APPS_START = "hide_app_from_recents";
+        private static final String PREF_SLIM_RECENTS = "slim_recents_panel";  
 
         // Package name of the hidden recetns apps activity
         public static final String HIDDEN_RECENTS_PACKAGE_NAME = "com.android.settings";
@@ -80,6 +81,7 @@ public class RecentsSettingsFragment extends Fragment {
         private SwitchPreference mRecentsClearAll;
         private ListPreference mRecentsClearAllLocation;
         private Preference mHiddenRecentsApps;
+        private Preference mSlimRecentsPanel;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -95,6 +97,7 @@ public class RecentsSettingsFragment extends Fragment {
             PreferenceScreen prefSet = getPreferenceScreen();
             Activity activity = getActivity();
             ContentResolver resolver = getActivity().getContentResolver();
+
             mRecentsClearAllLocation = (ListPreference) prefSet.findPreference(RECENTS_CLEAR_ALL_LOCATION);
             int location = Settings.System.getIntForUser(resolver,
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, 3, UserHandle.USER_CURRENT);
@@ -103,8 +106,9 @@ public class RecentsSettingsFragment extends Fragment {
             mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
 
             mHiddenRecentsApps = (Preference) prefSet.findPreference(PREF_HIDDEN_RECENTS_APPS_START);
-            return prefSet;
 
+            mSlimRecentsPanel = prefSet.findPreference(PREF_SLIM_RECENTS);
+            return prefSet;
         }
 
         @Override
@@ -135,6 +139,9 @@ public class RecentsSettingsFragment extends Fragment {
         public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
             if (preference == mHiddenRecentsApps) {
                 getActivity().startActivity(INTENT_HIDDEN_RECENTS_SETTINGS);
+            } else if (preference == mSlimRecentsPanel) {
+                Intent intent = new Intent(getActivity(), SlimRecentPanel.class);
+                getActivity().startActivity(intent);
             } else {
                 return super.onPreferenceTreeClick(preferenceScreen, preference);
             }

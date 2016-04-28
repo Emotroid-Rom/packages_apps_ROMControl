@@ -77,4 +77,15 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="emotion_slim_recents_panel"
+        android:title="@string/emotion_recent_slim_category" >
+
+        <!-- Slim Recents -->
+        <Preference
+            android:key="slim_recents_panel"
+            android:title="@string/use_slim_recents_title" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
