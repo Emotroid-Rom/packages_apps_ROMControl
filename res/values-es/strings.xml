@@ -733,8 +733,6 @@
   <string name="weather_show_weather_summary">Activar para mostrar información del tiempo</string>
   <string name="weather_show_location_title">Mostrar ubicación</string>
   <string name="weather_show_location_summary">Activar para mostrar la ubicación</string>
-  <string name="weather_show_timestamp_title">Mostrar fecha y hora</string>
-  <string name="weather_show_timestamp_summary">Activar para mostrar la fecha y hora</string>
   <string name="weather_condition_icon_title">Icono de estado</string>
   <string name="weather_condition_icon_dlg_title">Elija un icono para mostrar la condición atmosférica</string>
   <string name="weather_condition_icon_monochrome_title">Monocromo</string>
