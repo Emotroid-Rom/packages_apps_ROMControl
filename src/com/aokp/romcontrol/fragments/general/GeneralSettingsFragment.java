@@ -95,12 +95,15 @@ public class GeneralSettingsFragment extends Fragment {
         private static final String KEY_OTA = "update_settings";
         public static final String OTA_PACKAGE_NAME = "com.emotion.ota";
 
+        private static final String PREF_FLOATING_WINDOWS = "floating_windows";
+
         private Context mContext;
         private Preference mLockClock;
         private SwitchPreference mDozePowersave;
         private boolean mDontPokeProperties;
         private Preference mOtapackage;
         private Preference mStatsEmotion;
+        private Preference mFloatingWindows;
 
         private static final String PREF_STATS_EMOTION = "emotion_stats";
 
@@ -140,6 +143,8 @@ public class GeneralSettingsFragment extends Fragment {
 
             mDozePowersave = findAndInitSwitchPref(DOZE_POWERSAVE_KEY);
             updateDozePowersaveOptions();
+
+            mFloatingWindows = prefSet.findPreference(PREF_FLOATING_WINDOWS);
             return prefSet;
         }
 
@@ -164,6 +169,9 @@ public class GeneralSettingsFragment extends Fragment {
                 writeDozePowersaveOptions();
             } else if (preference == mStatsEmotion) {
                 startActivity(INTENT_STATS);
+            } else if (preference == mFloatingWindows) {
+                Intent intent = new Intent(getActivity(), FloatingWindows.class);
+                getActivity().startActivity(intent);
             } else {
                 return super.onPreferenceTreeClick(preferenceScreen, preference);
             }

@@ -992,5 +992,19 @@
     <string name="recent_reset_value_title">Reset values</string>
     <!-- ATTENTION: RTL languages need to replace left with right -->
     <string name="recent_panel_lefty_mode_title">Show on the left edge</string>
-    <string name="recent_panel_lefty_mode_summary">Show recent apps panel on the left edge</string>        
+    <string name="recent_panel_lefty_mode_summary">Show recent apps panel on the left edge</string>
+
+    <!-- Floating Windows -->
+    <string name="floating_pref_title">Floating Windows</string>
+    <string name="shortcut_action_floating_windows">Floating Windows</string>
+    <string name="floating_master_switch">Master Switch</string>
+    <string name="floating_additional_options">Additional Float Options</string>
+    <string name="floating_windows">Floating Windows</string>
+    <string name="floating_windows_switch">Whether to allow global use of float mode, if this is off none of the below options will work DUH!!!
+    </string>
+    <string name="slim_action_floats">Slim Actions &amp; Pie</string>
+    <string name="slim_action_floats_summary">Launch Slim &amp; Pie Actions in Floating Window Mode</string>
+    <string name="gesture_anywhere_floating">Gesture Anywhere</string>
+    <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
+
 </resources>

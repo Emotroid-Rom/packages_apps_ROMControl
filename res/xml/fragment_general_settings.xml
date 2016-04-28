@@ -31,6 +31,16 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="floating_pref"
+        android:title="@string/floating_pref_title" >
+
+        <Preference
+            android:key="floating_windows"
+            android:title="@string/floating_windows" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="lock_clock_pref"
         android:title="@string/lock_clock_pref_title" >
         <PreferenceScreen

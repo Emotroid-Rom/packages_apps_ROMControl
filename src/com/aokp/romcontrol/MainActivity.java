@@ -41,6 +41,7 @@ import com.aokp.romcontrol.fragments.general.GeneralSettingsFragment;
 import com.aokp.romcontrol.fragments.general.RecentsSettingsFragment;
 import com.aokp.romcontrol.fragments.general.WakelockBlockerFragment;
 import com.aokp.romcontrol.fragments.general.SlimRecentPanel;
+import com.aokp.romcontrol.fragments.general.FloatingWindows;
 
 import com.aokp.romcontrol.fragments.sound.SoundTabHostFragment;
 import com.aokp.romcontrol.fragments.sound.SoundSettingsFragment;
