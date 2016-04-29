@@ -219,7 +219,6 @@ public class LockScreenSettingsFragment extends Fragment {
                 mTextColor.setOnPreferenceChangeListener(this);
             } else {
                 removePreference(PREF_SHOW_LOCATION);
-                removePreference(PREF_SHOW_TIMESTAMP);
                 removePreference(PREF_CONDITION_ICON);
                 removePreference(PREF_COLORIZE_ALL_ICONS);
                 catColors.removePreference(mTextColor);

@@ -33,7 +33,7 @@ import android.provider.Settings;
 import com.aokp.romcontrol.R;
 
 
-public static class FloatingWindows extends PreferenceActivity
+public class FloatingWindows extends PreferenceActivity
         implements OnPreferenceChangeListener {
 
     private static final String TAG = "FloatingWindows";
