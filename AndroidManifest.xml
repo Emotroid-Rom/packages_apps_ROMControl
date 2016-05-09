@@ -105,8 +105,6 @@
             <action android:name="android.intent.action.BOOT_COMPLETED" />
         </receiver>
 
-        <activity android:name="com.emotion.ota.MainActivity"/>
-
         <activity android:name=".romstats.AnonymousStats"
             android:label="@string/stats_title" >
             <intent-filter>

@@ -92,16 +92,12 @@ public class GeneralSettingsFragment extends Fragment {
         private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
         private final ArrayList<SwitchPreference> mResetSwitchPrefs  = new ArrayList<SwitchPreference>();
 
-        private static final String KEY_OTA = "update_settings";
-        public static final String OTA_PACKAGE_NAME = "com.emotion.ota";
-
         private static final String PREF_FLOATING_WINDOWS = "floating_windows";
 
         private Context mContext;
         private Preference mLockClock;
         private SwitchPreference mDozePowersave;
         private boolean mDontPokeProperties;
-        private Preference mOtapackage;
         private Preference mStatsEmotion;
         private Preference mFloatingWindows;
 
@@ -130,13 +126,6 @@ public class GeneralSettingsFragment extends Fragment {
                     prefSet.findPreference(KEY_LOCKCLOCK);
             if (!Helpers.isPackageInstalled(LOCKCLOCK_PACKAGE_NAME, pm)) {
                 prefSet.removePreference(mLockClock);
-            }
-
-            // Ota app check
-            mOtapackage = (Preference)
-                    prefSet.findPreference(KEY_OTA);
-            if (!Helpers.isPackageInstalled(OTA_PACKAGE_NAME, pm)) {
-                prefSet.removePreference(mOtapackage);
             }
 
             mStatsEmotion = prefSet.findPreference(PREF_STATS_EMOTION);

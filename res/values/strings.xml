@@ -909,16 +909,13 @@
     <string name="battery_bar_animate_title">Charging animation</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
 
-    <!-- OTA -->
-    <string name="ota_title">Emotion OTA</string>
-    <string name="updater_title">Updates</string>
-
     <!-- Ability to disable hardware keys via nav bar settings -->
     <string name="hw_keys_title">Hardware keys</string>
     <string name="hw_keys_summary">Enable hardware keys</string>
 
     <!-- ROm Stats -->
     <!-- Main -->
+    <string name="stats_title_cat">Emotion Stats</string>
     <string name="stats_title">Stats</string>
 
     <!-- Notification -->
@@ -1005,4 +1002,6 @@
     <string name="gesture_anywhere_floating">Gesture Anywhere</string>
     <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
 
+=======
+>>>>>>> parent of 6a47537... ROMControl: Add EmotionOTA [1/2]
 </resources>
