@@ -32,6 +32,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+import android.preference.SlimSeekBarPreference;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 
@@ -50,8 +51,11 @@ import java.util.List;
 import com.aokp.romcontrol.R;
 import com.aokp.romcontrol.settings.NumberPickerPreference;
 
-public class PowerMenuSettingsFragment extends Fragment 
-        implements OnPreferenceChangeListener{
+public class PowerMenuSettingsFragment extends Fragment {
+
+    public PowerMenuSettingsFragment() {
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,12 +66,16 @@ public class PowerMenuSettingsFragment extends Fragment
                 .commit();
     }
 
-    public static class SettingsPreferenceFragment extends PreferenceFragment {
+    public static class SettingsPreferenceFragment extends PreferenceFragment 
+            implements OnPreferenceChangeListener {
+
         public SettingsPreferenceFragment() {
         }
 
         final static String TAG = "PowerMenuActions";
         private static final String SCREENSHOT_DELAY = "screenshot_delay";
+        private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
+        private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
 
         private ContentResolver mContentResolver;
 
@@ -82,6 +90,8 @@ public class PowerMenuSettingsFragment extends Fragment
         private SwitchPreference mSilentPref;
         private SwitchPreference mVoiceAssistPref;
         private SwitchPreference mAssistPref;
+        private SwitchPreference mOnTheGoPowerMenu;
+        private SlimSeekBarPreference mOnTheGoAlphaPref;
 
         Context mContext;
         private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
@@ -152,6 +162,16 @@ public class PowerMenuSettingsFragment extends Fragment
             int ssDelay = Settings.System.getInt(mCr,
                     Settings.System.SCREENSHOT_DELAY, 1);
             mScreenshotDelay.setCurrentValue(ssDelay);
+
+            mOnTheGoPowerMenu = (SwitchPreference) findPreference(POWER_MENU_ONTHEGO_ENABLED);
+            mOnTheGoPowerMenu.setChecked((Settings.System.getInt(getContentResolver(),
+                    Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1));
+            mOnTheGoPowerMenu.setOnPreferenceChangeListener(this);
+
+            mOnTheGoAlphaPref = (SlimSeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
+            mOnTheGoAlphaPref.setDefault(50);
+            mOnTheGoAlphaPref.setInterval(1);
+            mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
 
             getUserConfig();
         }
@@ -290,6 +310,15 @@ public class PowerMenuSettingsFragment extends Fragment
                 int value = Integer.parseInt(newValue.toString());
                 Settings.System.putInt(mCr, Settings.System.SCREENSHOT_DELAY,
                         value);
+                return true;
+            } else if (preference == mOnTheGoPowerMenu) {
+                boolean value = ((Boolean)newValue).booleanValue();
+                Settings.System.putInt(getContentResolver(), Settings.System.POWER_MENU_ONTHEGO_ENABLED, value ? 1 : 0);
+                return true;
+            } else if (preference == mOnTheGoAlphaPref) {
+                float val = Float.parseFloat((String) newValue);
+                Settings.System.putFloat(getContentResolver(), Settings.System.ON_THE_GO_ALPHA,
+                    val / 100);
                 return true;
             }
             return false;
