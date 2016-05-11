@@ -103,6 +103,7 @@ public class StatusbarSettingsFragment extends Fragment {
         private static final String SHOW_FOURG = "show_fourg";
         private static final String MISSED_CALL_BREATH = "missed_call_breath";
         private static final String VOICEMAIL_BREATH = "voicemail_breath";
+        private static final String HIDE_CARRIER_MAX_NOTIFICATION = "hide_carrier_max_notification";
 
         static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 
@@ -119,6 +120,7 @@ public class StatusbarSettingsFragment extends Fragment {
         private SwitchPreference mShowFourG;
         private SwitchPreference mMissedCallBreath;
         private SwitchPreference mVoicemailBreath;
+        private ListPreference mHideCarrierMaxNotification; 
 
         private boolean mCheckPreferences;
 
@@ -233,6 +235,13 @@ public class StatusbarSettingsFragment extends Fragment {
                 prefSet.removePreference(mMissedCallBreath);
                 prefSet.removePreference(mVoicemailBreath);
             }
+
+            mHideCarrierMaxNotification = (ListPreference) findPreference(HIDE_CARRIER_MAX_NOTIFICATION);
+            int numberOfNotificationIcons = Settings.System.getInt(resolver,
+                    Settings.System.HIDE_CARRIER_MAX_NOTIFICATION, 1);
+            mHideCarrierMaxNotification.setValue(String.valueOf(numberOfNotificationIcons));
+            mHideCarrierMaxNotification.setSummary(mHideCarrierMaxNotification.getEntry());
+            mHideCarrierMaxNotification.setOnPreferenceChangeListener(this);
 
             updateWeatherOptions();
             setHasOptionsMenu(true);
@@ -384,6 +393,12 @@ public class StatusbarSettingsFragment extends Fragment {
             } else if (preference == mVoicemailBreath) {
                 boolean value = (Boolean) newValue;
                 Settings.System.putInt(resolver, Settings.System.KEY_VOICEMAIL_BREATH, value ? 1 : 0);
+                return true;
+            } else if (preference == mHideCarrierMaxNotification) {
+                int intValue = Integer.valueOf((String) newValue);
+                int index = mHideCarrierMaxNotification.findIndexOfValue((String) newValue);
+                Settings.System.putInt(resolver, Settings.System.HIDE_CARRIER_MAX_NOTIFICATION, intValue);
+                preference.setSummary(mHideCarrierMaxNotification.getEntries()[index]);
                 return true;
             }
             return false;
