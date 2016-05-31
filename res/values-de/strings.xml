@@ -125,12 +125,12 @@
   <string name="mgerrit_changelog_summary">Interaktives Changelog, das live von unserer Gerrit-Instanz geladen wird</string>
   <!-- MultiChoiceSetting -->
   <plurals name="multichoice_at_least">
-    <item quantity="one">Bitte wählen Sie mindestens <xliff:g id="number"> %d </xliff:g> Element.</item>
-    <item quantity="other">Bitte wählen Sie mindestens <xliff:g id="number"> %d </xliff:g> Elemente.</item>
+    <item quantity="one">Bitte wählen Sie mindestens <xliff:g id="number">%d</xliff:g> Element.</item>
+    <item quantity="other">Bitte wählen Sie mindestens <xliff:g id="number">%d</xliff:g> Elemente.</item>
   </plurals>
   <plurals name="multichoice_at_most">
-    <item quantity="one">Bitte wählen Sie höchstens <xliff:g id="number"> %d </xliff:g> Element.</item>
-    <item quantity="other">Bitte wählen Sie höchstens <xliff:g id="number"> %d </xliff:g> Elemente.</item>
+    <item quantity="one">Bitte wählen Sie höchstens <xliff:g id="number">%d</xliff:g> Element.</item>
+    <item quantity="other">Bitte wählen Sie höchstens <xliff:g id="number">%d</xliff:g> Elemente.</item>
   </plurals>
   <!-- Color Picker -->
   <string name="dialog_color_picker">Farbe auswählen</string>
@@ -697,7 +697,7 @@
   <string name="backlight_timeout_title">Automatisch abschalten nach</string>
   <string name="backlight_timeout_unlimited">Nie</string>
   <string name="backlight_summary_disabled">Deaktiviert</string>
-  <string name="backlight_summary_enabled_with_timeout">Aktiviert für <xliff:g id="timeout"> %s </xliff:g></string>
+  <string name="backlight_summary_enabled_with_timeout">Aktiviert für <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Aktivieren</string>
   <string name="volume_keys_control_ring_stream_title">Klingeltonlautstärke</string>
   <string name="volume_keys_control_ring_stream_summary_on">Lautstärketasten steuern Klingeltonlautstärke</string>
@@ -713,7 +713,7 @@
   <string name="keyboard_rotation_toggle_title">Automatische Tastatur-Rotation</string>
   <string name="keyboard_rotation_toggle_summary">Auto-Rotation erzwingen wenn die Tastatur eingeblendet ist</string>
   <string name="keyboard_rotation_timeout_title">Timeout der Auto-Rotation</string>
-  <string name="keyboard_rotation_timeout_summary">Deaktiviert die automatische Drehung <xliff:g id="rotate_timeout"> %1$ s </xliff:g> in Sekunden nach dem die Tastatur ausgeblendet ist</string>
+  <string name="keyboard_rotation_timeout_summary">Deaktiviert die automatische Drehung <xliff:g id="rotate_timeout">%1$s</xliff:g> in Sekunden nach dem die Tastatur ausgeblendet ist</string>
   <string name="keyboard_rotation_dialog">Hinweis: Diese Funktion erzwingt vorübergehend die automatische Bildschirmdrehung, solange die Tastatur eingeblendet ist. Wenn \"Display automatisch drehen\" bereits aktiv ist, hat sie keine Auswirkung.</string>
   <string name="show_enter_key_title">Eingabetaste anzeigen</string>
   <string name="show_enter_key_summary">Zwingt die Tastatur zur Darstellung der Eingabetaste anstelle der Emoticon-Taste</string>
@@ -847,7 +847,7 @@
   <string name="enable_reporting_title">Berichterstellung aktivieren</string>
   <string name="disable_reporting_persistent">Persistent opt-out</string>
   <string name="preview_data_title">Vorschau</string>
-  <string name="preview_data_summary"> %s</string>
+  <string name="preview_data_summary">%s</string>
   <string name="view_stats_title">Statistik-Seite anzeigen</string>
   <string name="anonymous_learn_more">Erfahren Sie mehr</string>
   <string name="last_report_on">Zuletzt gemeldet</string>
