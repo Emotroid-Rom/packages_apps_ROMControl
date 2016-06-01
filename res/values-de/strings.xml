@@ -697,7 +697,7 @@
   <string name="backlight_timeout_title">Automatisch abschalten nach</string>
   <string name="backlight_timeout_unlimited">Nie</string>
   <string name="backlight_summary_disabled">Deaktiviert</string>
-  <string name="backlight_summary_enabled_with_timeout">Aktiviert für <xliff:g id="timeout"> %s </xliff:g></string>
+  <string name="backlight_summary_enabled_with_timeout">Aktiviert für <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Aktivieren</string>
   <string name="volume_keys_control_ring_stream_title">Klingeltonlautstärke</string>
   <string name="volume_keys_control_ring_stream_summary_on">Lautstärketasten steuern Klingeltonlautstärke</string>
@@ -713,7 +713,7 @@
   <string name="keyboard_rotation_toggle_title">Automatische Tastatur-Rotation</string>
   <string name="keyboard_rotation_toggle_summary">Auto-Rotation erzwingen wenn die Tastatur eingeblendet ist</string>
   <string name="keyboard_rotation_timeout_title">Timeout der Auto-Rotation</string>
-  <string name="keyboard_rotation_timeout_summary">Deaktiviert die automatische Drehung <xliff:g id="rotate_timeout"> %1$ s </xliff:g> in Sekunden nach dem die Tastatur ausgeblendet ist</string>
+  <string name="keyboard_rotation_timeout_summary">Deaktiviert die automatische Drehung <xliff:g id="rotate_timeout">%1$ s</xliff:g> in Sekunden nach dem die Tastatur ausgeblendet ist</string>
   <string name="keyboard_rotation_dialog">Hinweis: Diese Funktion erzwingt vorübergehend die automatische Bildschirmdrehung, solange die Tastatur eingeblendet ist. Wenn \"Display automatisch drehen\" bereits aktiv ist, hat sie keine Auswirkung.</string>
   <string name="show_enter_key_title">Eingabetaste anzeigen</string>
   <string name="show_enter_key_summary">Zwingt die Tastatur zur Darstellung der Eingabetaste anstelle der Emoticon-Taste</string>
