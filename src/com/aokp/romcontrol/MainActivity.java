@@ -43,6 +43,11 @@ import com.aokp.romcontrol.fragments.general.WakelockBlockerFragment;
 import com.aokp.romcontrol.fragments.general.SlimRecentPanel;
 import com.aokp.romcontrol.fragments.general.FloatingWindows;
 
+import com.aokp.romcontrol.fragments.pie.PieColorFragment;
+import com.aokp.romcontrol.fragments.pie.PieControlFragment;
+import com.aokp.romcontrol.fragments.pie.PieTabHostFragment;
+import com.aokp.romcontrol.fragments.pie.PieTargetsFragment;
+
 import com.aokp.romcontrol.fragments.sound.SoundTabHostFragment;
 import com.aokp.romcontrol.fragments.sound.SoundSettingsFragment;
 import com.aokp.romcontrol.fragments.sound.LiveVolumeFragment;
