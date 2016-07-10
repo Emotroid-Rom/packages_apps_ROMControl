@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The Android Open Kang Project
+ * Copyright (C) 2016 Emotroid Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,13 @@
 package com.aokp.romcontrol.fragments.general;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ActivityManager;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.os.Bundle;
@@ -34,12 +37,15 @@ import android.view.ViewGroup;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 
 import com.aokp.romcontrol.R;
+import com.aokp.romcontrol.util.Helpers;
 
 public class RecentsSettingsFragment extends Fragment {
 
@@ -67,6 +73,8 @@ public class RecentsSettingsFragment extends Fragment {
 
         }
         
+	private static final String TAG = "OmniSwitch";
+	
         private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
         private static final String PREF_HIDDEN_RECENTS_APPS_START = "hide_app_from_recents";
         private static final String PREF_SLIM_RECENTS = "slim_recents_panel";  
@@ -78,10 +86,24 @@ public class RecentsSettingsFragment extends Fragment {
                 .setClassName(HIDDEN_RECENTS_PACKAGE_NAME,
                 HIDDEN_RECENTS_PACKAGE_NAME + ".emotion.HAFRAppListActivity");
 
+        private static final String CAT_OMNISWITCH = "omniswitch_category";
+        private static final String RECENTS_USE_OMNISWITCH = "recents_use_omniswitch";
+        private static final String OMNISWITCH_START_SETTINGS = "omniswitch_start_settings";
+
+        // Package name of the omnniswitch app
+        public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
+        // Intent for launching the omniswitch settings actvity
+        public static Intent INTENT_OMNISWITCH_SETTINGS = new Intent(Intent.ACTION_MAIN)
+                .setClassName(OMNISWITCH_PACKAGE_NAME, OMNISWITCH_PACKAGE_NAME + ".SettingsActivity");
+
         private SwitchPreference mRecentsClearAll;
         private ListPreference mRecentsClearAllLocation;
         private Preference mHiddenRecentsApps;
         private Preference mSlimRecentsPanel;
+        private PreferenceCategory mOmniSwitchCategory;
+        private SwitchPreference mRecentsUseOmniSwitch;
+        private Preference mOmniSwitchSettings;
+        private boolean mOmniSwitchInitCalled;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -95,7 +117,7 @@ public class RecentsSettingsFragment extends Fragment {
             addPreferencesFromResource(R.xml.fragment_recents_settings);
 
             PreferenceScreen prefSet = getPreferenceScreen();
-            Activity activity = getActivity();
+            PackageManager pm = getActivity().getPackageManager();
             ContentResolver resolver = getActivity().getContentResolver();
 
             mRecentsClearAllLocation = (ListPreference) prefSet.findPreference(RECENTS_CLEAR_ALL_LOCATION);
@@ -108,6 +130,26 @@ public class RecentsSettingsFragment extends Fragment {
             mHiddenRecentsApps = (Preference) prefSet.findPreference(PREF_HIDDEN_RECENTS_APPS_START);
 
             mSlimRecentsPanel = prefSet.findPreference(PREF_SLIM_RECENTS);
+
+            mRecentsUseOmniSwitch = (SwitchPreference)
+                    findPreference(RECENTS_USE_OMNISWITCH);
+            try {
+                mRecentsUseOmniSwitch.setChecked(Settings.System.getInt(resolver,
+                        Settings.System.RECENTS_USE_OMNISWITCH) == 1);
+                mOmniSwitchInitCalled = true;
+            } catch(SettingNotFoundException e){
+                // if the settings value is unset
+            }
+            mRecentsUseOmniSwitch.setOnPreferenceChangeListener(this);
+
+            mOmniSwitchSettings = (Preference)
+                    findPreference(OMNISWITCH_START_SETTINGS);
+            mOmniSwitchSettings.setEnabled(mRecentsUseOmniSwitch.isChecked());
+
+            mOmniSwitchCategory = (PreferenceCategory) prefSet.findPreference(CAT_OMNISWITCH);
+            if (!Helpers.isPackageInstalled(OMNISWITCH_PACKAGE_NAME, pm)) {
+                prefSet.removePreference(mOmniSwitchCategory);
+            }
             return prefSet;
         }
 
@@ -131,14 +173,41 @@ public class RecentsSettingsFragment extends Fragment {
                         Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
                 mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntries()[index]);
                 return true;
+           } else if (preference == mRecentsUseOmniSwitch) {
+                boolean value = (Boolean) newValue;
+
+                // if value has never been set before
+                if (value && !mOmniSwitchInitCalled){
+                    openOmniSwitchFirstTimeWarning();
+                    mOmniSwitchInitCalled = true;
+                }
+
+                Settings.System.putInt(
+                        resolver, Settings.System.RECENTS_USE_OMNISWITCH, value ? 1 : 0);
+                mOmniSwitchSettings.setEnabled(value);
+            } else {
+                return false;
             }
-            return false;
+
+            return true;
+        }
+
+        private void openOmniSwitchFirstTimeWarning() {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle(getResources().getString(R.string.omniswitch_first_time_title))
+                    .setMessage(getResources().getString(R.string.omniswitch_first_time_message))
+                    .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                            }
+                    }).show();
         }
 
         @Override
         public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
             if (preference == mHiddenRecentsApps) {
                 getActivity().startActivity(INTENT_HIDDEN_RECENTS_SETTINGS);
+            } else if (preference == mOmniSwitchSettings){
+                getActivity().startActivity(INTENT_OMNISWITCH_SETTINGS);
             } else if (preference == mSlimRecentsPanel) {
                 Intent intent = new Intent(getActivity(), SlimRecentPanel.class);
                 getActivity().startActivity(intent);
