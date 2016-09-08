@@ -240,6 +240,9 @@
   <string name="clock_font_size_21">21</string>
   <string name="clock_font_size_22">22</string>
   <string name="clock_font_size_23">23</string>
+  <string name="clock_date_position">Posición de la fecha</string>
+  <string name="clock_date_right">A la derecha de la hora</string>
+  <string name="clock_date_left">A la izquierda de la hora</string>
   <!-- Status bar date -->
   <string name="status_bar_clock_category">Reloj</string>
   <string name="status_bar_date_title">Fecha</string>
@@ -736,7 +739,7 @@
   <string name="weather_show_location_title">Mostrar ubicación</string>
   <string name="weather_show_location_summary">Activar para mostrar la ubicación</string>
   <string name="weather_condition_icon_title">Icono de estado</string>
-  <string name="weather_condition_icon_dlg_title">Elija un icono para mostrar la condición atmosférica</string>
+  <string name="weather_condition_icon_dlg_title">Escoge un icono para mostrar la información meteorológica</string>
   <string name="weather_condition_icon_monochrome_title">Monocromo</string>
   <string name="weather_condition_icon_colored_title">Colorido</string>
   <string name="weather_condition_icon_vclouds_title">VClouds</string>
@@ -821,6 +824,8 @@
   <string name="battery_not_summary">El icono de batería se mostrará donde aparece el botón de descartar todas las notificaciones</string>
   <string name="battery_bar_location">Ubicación de la barra de batería</string>
   <string name="battery_bar_color">Color de la barra de la batería</string>
+  <string name="battery_bar_charging_color">Color de la barra de bateria durante la carga</string>
+  <string name="battery_bar_battery_low_color">Color de la barra de bateria con bateria baja</string>
   <string name="battery_bar">Opciones de la barra de la batería</string>
   <string name="battery_bar_style_title">Estilo de barra de la batería</string>
   <string name="battery_bar_thickness_title">Grosor de la barra de batería</string>
@@ -899,17 +904,17 @@
   <string name="floating_master_switch">Interruptor principal</string>
   <string name="floating_additional_options">Opciones adicionales de flotador</string>
   <string name="floating_windows">Ventanas flotantes</string>
-  <string name="floating_windows_switch">Whether to allow global use of float mode, if this is off none of the below options will work DUH!!!
+  <string name="floating_windows_switch">Si se permite el uso global del modo flotante, si este modo está apagado, ninguna de las opciones de abajo funcionará ¡ARRGH!!!
     </string>
-  <string name="slim_action_floats">Slim Actions &amp; Pie</string>
-  <string name="slim_action_floats_summary">Launch Slim &amp; Pie Actions in Floating Window Mode</string>
-  <string name="gesture_anywhere_floating">Gesture Anywhere</string>
-  <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
+  <string name="slim_action_floats">Acciones Slim &amp; Pie</string>
+  <string name="slim_action_floats_summary">Lanzar las acciones Slim &amp; Pie en el modo de ventana flotante</string>
+  <string name="gesture_anywhere_floating">Gesto en cualquier lugar</string>
+  <string name="gesture_anywhere_floating_summary">Lanzar los atajos de Gestos en cualquier lugar, en modo flotante</string>
   <string name="powermenu_screenshot_delay_title">Retraso de captura de pantalla</string>
   <!-- On-The-Go -->
   <string name="power_menu_onthego_title">Modo On-The-Go</string>
   <string name="onthego_alpha_title">On-The-Go Alpha</string>
-  <string name="onthego_alpha_summary">Alpha value of the On-The-Go overlay. Needs re-toggling.</string>
+  <string name="onthego_alpha_summary">Valor de alfa de la superposición de On-The-Go. Necesita volver a alternar.</string>
   <!-- Power menu Animations  -->
   <string name="power_menu_animation_title">Animación de menú de apagado</string>
   <string name="power_menu_animation_summary">Cambiar la animación de entrar/salir del menú de apagado</string>
@@ -925,4 +930,96 @@
   <string name="power_menu_animation_card">3D</string>
   <string name="power_menu_animation_translucent_top">Translúcido (arriba)</string>
   <string name="power_menu_animation_translucent_bottom">Translúcido (abajo)</string>
+  <!-- Carrier Label - Hide based on notifications -->
+  <string name="text_title">Texto</string>
+  <string name="number_of_notifications_title">Número de notificaciones</string>
+  <string name="number_of_notifications_one_title">1</string>
+  <string name="number_of_notifications_two_title">2</string>
+  <string name="number_of_notifications_three_title">3</string>
+  <string name="number_of_notifications_four_title">4</string>
+  <string name="number_of_notifications_five_title">5</string>
+  <string name="number_of_notifications_six_title">6</string>
+  <string name="carrier_label_hide_label_title">Ocultar etiqueta de operador</string>
+  <string name="carrier_label_number_of_notification_icons_title">Número máximo de iconos antes de ocultar</string>
+  <!-- Max Lockscreen Notification count -->
+  <string name="weather_cat_notifications_title">Notificaciones</string>
+  <string name="lockscreen_maxnotif_title">Contador de notificaciones en la pantalla de bloqueo</string>
+  <string name="lockscreen_maxnotif_sumary">Activar límite de número máximo de notificaciones en la pantalla de bloqueo</string>
+  <string name="lockscreen_maxnotif_config">Número máximo de notificaciones en la pantalla de bloqueo</string>
+  <!-- Hide Lockscreen clock & date -->
+  <string name="hide_lockscreen_items_title">Objetos de pantalla de bloqueo</string>
+  <string name="hide_lockscreen_clock_title">Mostrar el reloj de la pantalla de bloqueo</string>
+  <string name="hide_lockscreen_date_title">Mostrar fecha en la pantalla de bloqueo</string>
+  <!-- PA Pie control -->
+  <string name="pa_piecontrol_settings_summary">Personalizar el estilo, tamaño y color de PA Pie 2.0</string>
+  <string name="pa_pie_control_title">Pie Control</string>
+  <string name="pa_pie_control_enable_title">Activar Pie Control</string>
+  <string name="pa_pie_always_right_title">Pie siempre en la derecha</string>
+  <string name="pa_pie_always_right_summary">Pie siempre se mostrará a la derecha en modo apaisado</string>
+  <string name="pa_pie_targets_title">Acciones del Pie Control</string>
+  <string name="pa_pie_style_title">Estilo de Pie Control</string>
+  <string name="pa_pie_menu_title">Mostrar siempre el botón de menú</string>
+  <string name="pa_pie_menu_summary">El botón de menú debe ser mostrado siempre, incluso cuando no es necesario</string>
+  <string name="pa_pie_size_title">Tamaño de Pie</string>
+  <string name="pa_pie_size_summary">Definir el tamaño de los controles Pie</string>
+  <string name="pa_pie_size_small">Pequeño</string>
+  <string name="pa_pie_size_default">@string/pa_pie_mode_default</string>
+  <string name="pa_pie_size_large">Grande</string>
+  <string name="pa_pie_size_gigantic">Gigantesco</string>
+  <string name="pa_pie_size_monster">Monstruoso</string>
+  <string name="pa_pie_size_enormous">Enorme</string>
+  <string name="pa_pie_mode_default">Por defecto</string>
+  <string name="pa_pie_gravity_title">Posición de Pie</string>
+  <string name="pa_pie_gravity_summary">Seleccione la ubicación donde se colocará el Pie</string>
+  <string name="pa_pie_gravity_bottom">Abajo</string>
+  <string name="pa_pie_gravity_right">Derecha</string>
+  <string name="pa_pie_gravity_left">Izquierda</string>
+  <string name="pa_pie_gap_title">Objeto vacío</string>
+  <string name="pa_pie_gap_summary">Ajustar el espacio entre los elementos del Pie</string>
+  <string name="pa_pie_angle_title">Ángulo del Pie</string>
+  <string name="pa_pie_angle_summary">Ajustar el ángulo de los bordes del Pie desde el adjunto</string>
+  <string name="pa_pie_angle_none">Ninguno (viejo)</string>
+  <string name="pa_pie_angle_small">Pequeño</string>
+  <string name="pa_pie_angle_big">Normal (por defecto)</string>
+  <string name="pa_pie_angle_huge">Grande</string>
+  <string name="pa_pie_angle_super">Enorme</string>
+  <string name="pa_pie_gap_none">Ninguno</string>
+  <string name="pa_pie_gap_small">Pequeño</string>
+  <string name="pa_pie_gap_big">Grande (por defecto)</string>
+  <string name="pa_pie_gap_huge">Enorme</string>
+  <string name="pa_pie_mode_title">Estilo de Pie Control</string>
+  <string name="pa_pie_mode_summary">Gestionar cómo se manejarán las animaciones y las adiciones de estado</string>
+  <string name="pa_pie_mode_bare">Vacio</string>
+  <string name="pa_pie_mode_quick">Rápido</string>
+  <string name="pa_pie_mode_default">Por defecto</string>
+  <string name="pa_pie_mode_slow">Lento</string>
+  <string name="pa_pie_lastapp_title">Última aplicación</string>
+  <string name="pa_pie_lastapp_summary">Activar botón de última aplicación</string>
+  <string name="pa_pie_killtask_title">Limpiar tarea</string>
+  <string name="pa_pie_killtask_summary">Habilitar botón para limpiar tareas</string>
+  <string name="pa_pie_notifications_title">Notificaciones</string>
+  <string name="pa_pie_notifications_summary">Habilitar botón de notificaciones</string>
+  <string name="pa_pie_settings_panel_title">Panel de ajustes rápidos</string>
+  <string name="pa_pie_settings_panel_summary">Activar botón de expandir panel de ajustes rápidos</string>
+  <string name="pa_pie_screenshot_title">Captura de pantalla</string>
+  <string name="pa_pie_screenshot_summary">Activar botón de captura de pantalla</string>
+  <string name="pa_pie_color_title">Ajustes de color de Pie Control</string>
+  <string name="pa_pie_color_style_title">Estilo de color de Pie Control</string>
+  <string name="pa_pie_background_title">Color del fondo</string>
+  <string name="pa_pie_select_title">Selección de Color</string>
+  <string name="pa_pie_outlines_title">Esquemas de color</string>
+  <string name="pa_pie_status_clock_title">Color del reloj</string>
+  <string name="pa_pie_status_title">Color del estado</string>
+  <string name="pa_pie_chevron_title">Color de Chevron</string>
+  <string name="pa_pie_juice_title">Color del jugo de la batería</string>
+  <string name="pa_pie_button_color">Color del botón</string>
+  <string name="pa_pie_button_color_title">Color de los botones</string>
+  <!-- OmniSwitch -->
+  <string name="omniswitch_category_title">OmniSwitch</string>
+  <string name="recents_use_omniswitch_title">Usar OmniSwitch como recientes</string>
+  <string name="recents_use_omniswitch_summary">Utilizar OmniSwitch en lugar de los recientes por defecto</string>
+  <string name="omniswitch_start_settings_title">Ajustes</string>
+  <string name="omniswitch_start_settings_summary">Abrir configuración de OmniSwitch</string>
+  <string name="omniswitch_first_time_title">Información</string>
+  <string name="omniswitch_first_time_message">Asegúrese de que ha habilitado OmniSwitch. Puede hacerlo en \"Ajustes\" más abajo</string>
 </resources>
