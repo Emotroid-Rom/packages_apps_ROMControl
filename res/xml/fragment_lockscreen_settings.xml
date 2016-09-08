@@ -171,11 +171,6 @@
             android:title="@string/hide_lockscreen_date_title"
             android:defaultValue="true" />
 
-        <com.aokp.romcontrol.settings.CMSecureSettingSwitchPreference
-            android:key="lock_screen_weather_enabled"
-            android:title="@string/lockscreen_weather_enabled_title"
-            android:defaultValue="false"/>
-
     </PreferenceCategory>
 
 </PreferenceScreen>
